@@ -1,0 +1,30 @@
+---
+layout: layouts/base.njk
+section: post
+---
+
+<article>
+  <h3 class="no_margin title">{{ title }}</h3>
+
+      <time datetime="{{ page.date | machineDate }}" class="subtext grey no_margin">{{ page.date | readableDate }}</time>
+    <!-- by <a href="/authors/{{ author | slug }}/">{{ author }}</a> -->
+ 
+<div class="content">{{ layoutContent | safe }}</div>
+  
+
+  <!-- {% if tags %}
+    <p>
+    {% for tag in tags %}
+      {%- if tag != "post" -%}
+        {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+        <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
+      {%- endif -%}
+    {% endfor %}
+    </p>
+  {% endif %} -->
+
+</article>
+
+<nav>
+  <a href="{{ '/' | url }}" class="back_link">← back</a>
+</nav>

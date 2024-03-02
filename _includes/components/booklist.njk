@@ -1,0 +1,13 @@
+<section>
+	{% for book in booklist | reverse %}
+		<article{% if book.url == url %} data-current="current item"{% endif %}>
+				<a href="{{ book.url | url }}" class="post_link">
+					{% if book.data.title %}
+						{{ book.data.title }}
+					{% else %}
+						Untitled
+					{% endif %}
+				</a>
+		</article>
+	{% endfor %}
+</section>

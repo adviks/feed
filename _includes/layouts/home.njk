@@ -1,0 +1,23 @@
+---
+layout: layouts/base.njk
+section: home
+---
+
+{{ layoutContent | safe }}
+<p class="no_margin">Advik Samar</p>
+<p class="grey no_margin subtext" >Independent craftsman, spirited man, mechanic</p>
+<p>Posts</p>
+{% set postslist = collections.post %}
+{% include "components/postslist.njk" %}
+
+<p>Books</p>
+{% set booklist = collections.book %}
+{% include "components/booklist.njk" %}
+
+<br>
+<p class="no_margin">Reach out</p>
+<span class="grey"><small>drop me a line: </small></span><a href="mailto:adviks@duck.com" class="reach">adviks@duck.com</a>
+<a class="f_links grey" href="https://advik.substack.com/" target="_blank">newsletter</a>
+<a class="f_links grey" href="https://tx.me/iAdvik" target="_blank">telegram</a>
+
+
