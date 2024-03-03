@@ -15,6 +15,7 @@ body {
   padding: 5vh clamp(1rem, 5vw, 3rem) 1rem;
   font-family: "Public Sans", system-ui, sans-serif;
   line-height: 1.5;
+  background-color: #fefefe;
 }
 body {
   max-width: 600px;
@@ -76,6 +77,7 @@ a:hover {
 .post_list {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 5px;
 }
 .post_list_date {
   min-width: 100%;
@@ -119,7 +121,7 @@ a[href^="mailto\:"]::before {
 .reach {
   font-size: 14px;
 }
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   ::selection {
     background: white;
     color: black;
@@ -161,4 +163,4 @@ a[href^="mailto\:"]::before {
   footer {
     border-top: 1px solid #666;
   }
-}
+} */
