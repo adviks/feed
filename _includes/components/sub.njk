@@ -5,31 +5,24 @@ input:focus , .submit:focus{
   border: none;
  } 
 .sub{
-    border: 1px solid #ccc;
     padding: 0.5em;
     border-radius: 10px;
-    /* background: #eee; */
+    border: 1px solid #dfff28;;
     font-size: 14px;
 }
 
-.sub > input{
-    background-color: white;
-}
     #success-message{
         display: none;
         background-color: #27a04f36;
         padding: 0.5em;
         border-radius: 10px;
-        color: #000;
         border: 1px solid #27a04f;
     }
     
     #success-message p {
         margin: 0;
     }
-.CTA{
-    color: #222;
-}
+
 .forform {
     display: flex;
     flex-wrap: wrap;
@@ -44,9 +37,9 @@ input:focus , .submit:focus{
 
 .subButton {
     flex-basis: auto;
-    background-color: #fff !important;
+    background-color: #dfff28!important;
     color: #333;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     font-size: 14px;
 }
 
@@ -61,7 +54,6 @@ input:focus , .submit:focus{
 
 <div id="bust" style="display: block;">
         <p class="CTA">Subscribe to my newsletter for a monthly round-up of new blog posts and projects I’m working on! </p>
-        <!-- Join my inner circle! Be the first to know about my latest blog posts and get exclusive content straight to your inbox. Sign up now! -->
         <div class="subform">
             <form id="signup-form" class="forform" method="post" action="https://app.convertkit.com/forms/3277206/subscriptions">
                 <input class="subEmail" type="email" name="email_address" required placeholder="your@email.com">
@@ -70,8 +62,6 @@ input:focus , .submit:focus{
             <div id="success-message" class="success-message">
                 <p >Congratulations 🎉</p>
                 <p>In just a moment, you'll be receiving my welcome email.</p> 
-                
-                <!-- <p>Also, you can connect with me on <a href="https://twitter.com/adviksamar">Twitter</a>​</p> -->
                 
         </div>
         
