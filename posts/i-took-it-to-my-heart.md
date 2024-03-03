@@ -8,8 +8,8 @@ I haven't posted in the past 2 years (almost). This is kind of funny, because I 
 
 
 
-Well, I overhauled the blog once again. On the front-end, it's wears the same minimalist design, but a lot has changed behind the curtains. I think I (might) keep this setting for a long while.
+Well, I overhauled the blog once again. On the front-end, it wears the same minimalist design, but a lot has changed behind the curtains. I think I (might) keep this setup for a while now.
 
 
 
-I have start reading books, once again. So, in the next coming days, I'll be talking a lot about books.
+I have started reading books, once again. So, in the next coming days, I'll be talking a lot about books.
