@@ -41,6 +41,7 @@ a:hover {
 .serif {
   font-family: "Newsreader",Georgia, "Times New Roman", Times, serif;
   font-size: 16px;
+  font-weight:500;
 }
 
 .title {
@@ -65,13 +66,11 @@ a:hover {
 
 .post_link {
   text-decoration: none;
-  flex-wrap: wrap;
   color: #0033aa;
-  line-height: 1.1;
+  line-height: 1.25;
 }
 .post_link:hover {
-  text-decoration: underline;
-  text-decoration-color: #eee;
+  text-decoration: none;
 }
 
 .post_list {
@@ -131,26 +130,24 @@ a[href^="mailto\:"]::before {
 /* Dark Mode */
 
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   ::selection {
     background: white;
     color: black;
   }
   body {
-    color: #ddd;
+    color: #ccc;
     background-color: #000;
   }
   .grey {
     color: #888;
   }
   .post_link {
-    text-decoration: underline;
-    text-decoration-color: #333;
-    color: #aaa;
+    text-decoration: none;
+    color: #ddd;
   }
   .post_link:hover {
-    text-decoration: underline;
-    text-decoration-color: #333;
+    text-decoration: none;
   }
 
   .title {
@@ -173,4 +170,4 @@ a[href^="mailto\:"]::before {
   footer {
     border-top: 1px solid #666;
   }
-} */
+}
