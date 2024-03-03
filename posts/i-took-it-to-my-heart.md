@@ -4,7 +4,7 @@ date: 2024-03-03T17:58:59.821Z
 tags:
   - post
 ---
-I haven't posted in the past 2 years (almost). This is kind of funny, because I did write a post titled "No Opinions". In that post I talked about it's OK to not have opinions on everything. I guess, I took it to my heart, and stopped having, let alone opinions, even the thoughts.
+I haven't posted in the past 2 years (almost). This is kind of funny, because I did write a post titled ["No Opinions"](https://advik.uk/no-opinions/). In that post I talked about it's OK to not have opinions on everything. I guess, I took it to my heart, and stopped having, let alone opinions, even the thoughts.
 
 
 
