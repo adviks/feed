@@ -4,7 +4,7 @@
 @import url(https://rsms.me/inter/inter.css);
 
 ::selection {
-  background: #111;
+  background: #dfff28;
   color: white;
 }
 
@@ -13,7 +13,8 @@ body {
   flex-direction: column;
   min-height: 100vh;
   padding: 5vh clamp(1rem, 5vw, 3rem) 1rem;
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   line-height: 1.5;
 }
 body {
@@ -35,13 +36,15 @@ a {
 
 a:hover {
   text-decoration: underline;
-
 }
 
 .serif {
-  font-family: "Newsreader",Georgia, "Times New Roman", Times, serif;
+  font-family: "Newsreader", Georgia, "Times New Roman", Times, serif;
   font-size: 16px;
-  font-weight:500;
+  font-weight: 500;
+  background-color: #dfff28cc;
+  width: max-content;
+  color: #000;
 }
 
 .title {
@@ -84,7 +87,8 @@ a:hover {
 }
 .back_link:hover {
   text-decoration: none;
-}.back_link {
+}
+.back_link {
   text-decoration: none;
 }
 
@@ -123,21 +127,20 @@ a[href^="mailto\:"]::before {
   font-size: 14px;
 }
 
-
-
-
-
 /* Dark Mode */
-
 
 @media (prefers-color-scheme: dark) {
   ::selection {
-    background: white;
+    background: #dfff28;
     color: black;
   }
   body {
     color: #ccc;
     background-color: #000;
+  }
+
+  .serif{
+    background-color: #dfff28;
   }
   .grey {
     color: #888;
@@ -155,7 +158,7 @@ a[href^="mailto\:"]::before {
   }
 
   .content {
-    color: #eee;
+    color: #ddd;
   }
 
   .back_link {
