@@ -3,13 +3,8 @@
 # The backend option specifies how to access the content for your site
 backend:
   name: git-gateway
-  branch: master # The branch to update (optional; defaults to master)
-
-# Uncomment below to enable drafts https://www.decapcms.org/docs/add-to-your-site/#editorial-workflow
-publish_mode: editorial_workflow
-
-# Uncomment below to enable a link to your published site in the header bar of Decap CMS
-# site_url: https://eleventy-netlify-boilerplate.netlify.app/
+  branch: main # The branch to update (optional; defaults to master)#editorial-workflow
+# publish_mode: editorial_workflow
 
 media_folder: "static/img" # Media files will be stored in the repo under images/uploads
 
@@ -25,20 +20,4 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Tags", name: "tags", widget: "list", default: ["post"] }
       - { label: "Body", name: "body", widget: "markdown" }
-  # Our pages e.g. About
-  - name: "pages"
-    label: "Page"
-    folder: "pages"
-    create: false # Change to true to allow editors to create new pages
-    slug: "{{slug}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Permalink", name: "permalink", widget: "string" }
-      - label: "Navigation" # https://www.11ty.dev/docs/plugins/navigation/
-        name: "eleventyNavigation"
-        widget: "object"
-        fields:
-          - { label: "Key", name: "key", widget: "string" }
-          - { label: "Order", name: "order", widget: "number", default: 0 }
-      - { label: "Body", name: "body", widget: "markdown" }
+ 
