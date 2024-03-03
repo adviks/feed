@@ -1,6 +1,6 @@
 ---
 title: This is the first book that I'm going to talk about
-date: 2024-01-25T08:04:43.653Z
+date: 2024-02-01
 author: Advik
 summary: This is the summary
 tags:

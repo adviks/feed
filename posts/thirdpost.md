@@ -1,5 +1,5 @@
 ---
-title: This is the third example post which has a slightly longer title than the others
+title: This is the third example post which has slightly longer title than the other posts
 metaDescription: This is a sample meta description. If one is not present in
   your page/post's front matter, the default metadata.description will be used
   instead.

@@ -1,6 +1,6 @@
 <section>
 	{% for book in booklist | reverse %}
-		<article{% if book.url == url %} data-current="current item"{% endif %}>
+		<article{% if book.url == url %} data-current="current item"{% endif %} class="post_list">
 				<a href="{{ book.url | url }}" class="post_link">
 					{% if book.data.title %}
 						{{ book.data.title }}
@@ -8,6 +8,11 @@
 						Untitled
 					{% endif %}
 				</a>
+				<p class="no_margin ">
+					<time class="grey post_list_date" datetime="{{ book.date | machineDate }}">
+						{{ book.date | readableDate }}
+					</time>
+				</p>
 		</article>
 	{% endfor %}
 </section>

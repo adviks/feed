@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import url(https://rsms.me/inter/inter.css);
 
 ::selection {
   background: #111;
@@ -10,7 +13,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   padding: 5vh clamp(1rem, 5vw, 3rem) 1rem;
-  font-family: system-ui, sans-serif;
+  font-family: "Public Sans", system-ui, sans-serif;
   line-height: 1.5;
 }
 body {
@@ -34,12 +37,18 @@ a:hover {
   text-decoration: none;
 }
 
+.serif {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 16px;
+}
+
 .title {
   font-family: "Newsreader", serif;
   font-size: x-large;
   font-optical-sizing: auto;
-  font-weight: 500;
+  font-weight: 400;
   font-style: italic;
+  line-height: 1.25;
 }
 .grey {
   color: #999;
@@ -54,15 +63,24 @@ a:hover {
 }
 
 .post_link {
-  text-decoration: none;
-  color: #111;
+  text-decoration: underline;
+  text-decoration-color: #eee;
+  flex-wrap: wrap;
+  color: #333;
 }
 .post_link:hover {
-  background-color: black;
-  color: white;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: #eee;
 }
 
+.post_list {
+  display: flex;
+  justify-content: space-between;
+}
+.post_list_date {
+  min-width: 100%;
+  white-space: nowrap;
+}
 .back_link:hover {
   text-decoration: none;
 }
@@ -90,15 +108,16 @@ footer {
   border-top: 1px solid #ddd;
 }
 
-a[href^="https://"]::after {
+a[href^="https://"]::after
+{
   content: "↗";
 }
 
-a[href^='mailto\:']::before {
-	content: '';
-  }
-.reach{
-	font-size: 14px;
+a[href^="mailto\:"]::before {
+  content: "";
+}
+.reach {
+  font-size: 14px;
 }
 @media (prefers-color-scheme: dark) {
   ::selection {
@@ -106,20 +125,20 @@ a[href^='mailto\:']::before {
     color: black;
   }
   body {
-    color: #fefefe;
+    color: #ddd;
     background-color: #000;
   }
   .grey {
     color: #888;
   }
   .post_link {
-    text-decoration: none;
-    color: #ccc;
+    text-decoration: underline;
+    text-decoration-color: #333;
+    color: #aaa;
   }
   .post_link:hover {
-    background-color: #eee;
-    color: black;
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-color: #333;
   }
 
   .title {
@@ -131,7 +150,7 @@ a[href^='mailto\:']::before {
   }
 
   .back_link {
-    color: #fff;
+    color: #666;
   }
 
   .f_links:hover {
