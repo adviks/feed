@@ -30,17 +30,20 @@ h4 {
 }
 
 a {
-  text-decoration: none;
   color: #666;
+  text-decoration: underline;
+  text-decoration-color: #ffbf00;
 }
 
 a:hover {
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: #ffbf00;
+
 }
 
 .serif {
   font-family: "Newsreader",Georgia, "Times New Roman", Times, serif;
-  font-size: 18px;
+  font-size: 1px;
 }
 
 .title {
@@ -110,10 +113,10 @@ footer {
   border-top: 1px solid #ddd;
 }
 
-a[href^="https://"]::after
+/* a[href^="https://"]::after
 {
   content: "↗";
-}
+} */
 
 a[href^="mailto\:"]::before {
   content: "";
