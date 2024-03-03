@@ -1,5 +1,5 @@
 ---
-title: This is the first book that I'm going to talk about
+title: 1984
 date: 2024-02-01
 author: Advik
 summary: This is the summary
