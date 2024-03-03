@@ -12,4 +12,4 @@ Well, I overhauled the blog once again. On the front-end, it wears the same mini
 
 
 
-I have started reading books, once again. So, in the next coming days, I'll be talking a lot about books.
+I have started reading books, once again. So, in the next coming days, I'll be talking a lot about books. In general, I will talk about books in the posts, but I have created another section for books, as well. In that particular section, I'll post review (sort of) and my opinion about a particular book.
