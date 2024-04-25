@@ -138,6 +138,10 @@ a[href^="mailto\:"]::before {
   a {
   color: #dfff28;
 }
+  a:hover{
+    text-decoration: none;
+    color:  #dfff55;
+  }
   
   
   body {
