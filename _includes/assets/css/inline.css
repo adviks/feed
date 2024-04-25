@@ -136,7 +136,7 @@ a[href^="mailto\:"]::before {
   }
   body {
     color: #ccc;
-    background-color: #000;
+    background-color: #181818;
   }
 
   .serif{
