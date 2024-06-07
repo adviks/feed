@@ -129,7 +129,7 @@ a[href^="mailto\:"]::before {
 
 /* Dark Mode */
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   ::selection {
     background: #dfff28;
     color: black;
@@ -183,4 +183,4 @@ a[href^="mailto\:"]::before {
   footer {
     border-top: 1px solid #666;
   }
-}
+} */
