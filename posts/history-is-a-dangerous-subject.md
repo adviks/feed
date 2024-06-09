@@ -4,10 +4,6 @@ date: 2022-06-23T05:31:00.000Z
 tags:
   - post
 ---
-
-
-
-
 History can be a bit of a tricky subject, especially when it falls into the hands of politicians. We all know that history is biased, and that's just natural. Depending on who's telling the story, it can get a little skewed. For instance, if a European is telling their version of history, they're likely to make Europe look like the greatest thing since sliced bread. On the other hand, if a Turkish person is telling their view of history, you can bet they'll make the Turkish empire sound like the most amazing thing ever.
 
 
