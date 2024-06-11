@@ -1,5 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap');
+
+@import url('https://fonts.cdnfonts.com/css/nimbus-sans-l');
+@import url('https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap');
+/*CSS Styles Start  */
+:root{
+  --sans: 'Nimbus Sans L', sans-serif;
+  --serif: 'STIX Two Text', serif;
+  --bg: #fff;
+  --accent: #1034a6;
+  --bg-accent: #c6f3bf;
+  
+}
+
 ::selection {
   background:#c6f3bf;
   color: black;
@@ -10,13 +21,18 @@ body {
   flex-direction: column;
   min-height: 100vh;
   padding: 5vh clamp(1rem, 5vw, 3rem) 1rem;
-  font-family: "Schibsted Grotesk", sans-serif;
-  line-height: 1.5;
-  font-size: 16px;
-}
-body {
+  font-family: var(--sans);
+  /* line-height: 1.5; */
+  font-size: 18px;
   max-width: 600px;
   color: #000;
+  /* background-color: var(--bg); */
+}
+
+
+.content > p{
+  font-family: var(--serif);
+  font-size: 1.2rem;
 }
 
 
@@ -24,8 +40,8 @@ h1,
 h2,
 h3,
 h4 {
-  font-size: 20px;
-  font-weight: 400;
+  /* font-size: 20px; */
+  /* font-weight: 400; */
 }
 
 a {
@@ -34,26 +50,26 @@ a {
 }
 
 a:hover {
-  color:   #7be26a;
+  color:   var(--accent);
   text-decoration: none;
 }
 
 .serif {
-  font-family: "Newsreader", Georgia, "Times New Roman", Times, serif;
-  font-size: 16px;
+  font-family: var(--serif);
   font-weight: 500;
-  background-color:  #c6f3bf;
   width: max-content;
   color: #000;
+  background-color: var(--bg-accent);
 }
 
 .title {
-  font-family: "Newsreader", serif;
-  font-size: calc(28px + (32 - 28) * ((100vw - 300px) / (1600 - 300)));
+  font-family: var(--sans);
+  font-size: calc(36px + (42 - 36) * ((100vw - 300px) / (1600 - 300)));
   font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: italic;
+  font-weight: 700;
+  /* font-style: italic; */
   line-height: 1.25;
+  letter-spacing: 0.8;
 }
 
 
@@ -67,12 +83,12 @@ a:hover {
 }
 
 .subtext {
-  font-size: 14px;
+  font-size: 1rem;
 }
 
 .post_link {
   text-decoration: none;
-  color: #0033aa;
+  color: var(--accent);
   line-height: 1.25;
   font-weight: 500;
 }
@@ -99,7 +115,6 @@ a:hover {
 time {
   background: none;
   color: #999;
-  color: var(--code);
   padding: 0;
   border-radius: 0;
   font-size: 14px;
