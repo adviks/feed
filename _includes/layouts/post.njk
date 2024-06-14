@@ -6,8 +6,8 @@ section: post
 <article>
   <h1 class="no_margin title">{{ title }}</h1>
 
-      <time datetime="{{ page.date | machineDate }}" class="subtext grey no_margin">{{ page.date | readableDate }}</time>
-    <!-- by <a href="/authors/{{ author | slug }}/">{{ author }}</a> -->
+   <small>   <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time> </small>
+  <!--  by <a href="/authors/{{ author | slug }}/">{{ author }}</a> -->
  
 <div class="content">{{ layoutContent | safe }}</div>
   
@@ -24,7 +24,8 @@ section: post
   {% endif %} -->
 
 </article>
-
+<br>
+<hr>
 <br>
 {% include "components/sub.njk" %}
 <br>
@@ -32,4 +33,3 @@ section: post
   <a href="{{ '/' | url }}" class="back_link">← back</a>
 </nav>
 
-<!-- {% include "components/sbtt.njk" %} -->

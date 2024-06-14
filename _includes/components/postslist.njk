@@ -8,11 +8,11 @@
 						Untitled
 					{% endif %}
 				</a>
-				<p class="no_margin ">
+				<small style="margin-left: 10px">
 					<time class="grey post_list_date" datetime="{{ post.date | machineDate }}">
-						{{ post.date | readableDate }}
+						({{ post.date | readableDate }})
 					</time>
-				</p>
+				</small>
 		</article>
 	{% endfor %}
 </section>
