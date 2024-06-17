@@ -1,9 +1,14 @@
+
+@import url('https://rsms.me/inter/inter.css');
+@import url('https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap');
 body {
   margin: 40px auto;
   max-width: 650px;
-  line-height: 1.6;
-  font-size: 18px;
+  line-height: 1.4;
+  font-size: 16px;
   padding: 0 10px;
+  max-height: 100vh;
+  font-family: Inter, sans-serif;
 }
 
 h1,
@@ -12,6 +17,13 @@ h3 {
   line-height: 1.2
 }
 
+.title{
+  font-size: 2em;
+}
+a{
+  color: #0039a6;
+  text-decoration: none;
+}
 hr {
   border: none;
   height: 1px;
@@ -26,4 +38,44 @@ hr::after {
   transform-origin: 50% 50%;
   padding: 1rem;
   background-color: white;
+}
+
+
+.content{
+  font-family: "STIX Two Text", serif;
+  font-size: 1.2rem;
+}
+input{
+  border: none;
+  background: #e5e5ea;
+  padding: 7px 10px;
+  border-radius: 4px;
+  font-size: 1em;
+  font-family: Inter, sans-serif;
+}
+button{
+  background: #0039a6;
+  border: none;
+  padding: 7px 10px;
+  color: white;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size:1em;
+  font-family: Inter, sans-serif;
+}
+
+time{
+  color: #aeaeb2;
+}
+
+footer{
+  border-top: 1px solid #e5e5ea;
+  margin-top: 20px;
+}
+
+.post_link{
+  font-size: 1.2rem;
+  color: black;
+  font-weight: 500;
+  text-decoration: underline;
 }

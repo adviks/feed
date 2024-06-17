@@ -4,7 +4,7 @@ section: post
 ---
 
 <article>
-  <h1 class="no_margin title">{{ title }}</h1>
+  <h1 class="title">{{ title }}</h1>
 
    <small>   <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time> </small>
   <!--  by <a href="/authors/{{ author | slug }}/">{{ author }}</a> -->
@@ -28,6 +28,7 @@ section: post
 <hr>
 <br>
 {% include "components/sub.njk" %}
+
 <br>
 <nav>
   <a href="{{ '/' | url }}" class="back_link">← back</a>

@@ -13,7 +13,17 @@
         margin: 0;
     }
 
+#signup-form{
+display: flex;
+justify-content: space-between;
+}
+.subEmail{
+flex-grow: 0.7;
+}
 
+.submitButton{
+flex-grow: 0.2;
+}
 
 
 
@@ -32,7 +42,7 @@
         <div class="subform">
             <form id="signup-form" class="forform" method="post" action="https://app.convertkit.com/forms/3277206/subscriptions">
                 <input class="subEmail" type="email" name="email_address" required placeholder="your@email.com">
-                <input class="subButton" type="submit" value="Subscribe">
+                <button type="submit" class="submitButton">Subscribe</button>
             </form>
             <div id="success-message" class="success-message">
                 <p >Congratulations 🎉</p>
