@@ -12,15 +12,18 @@ section: home
 <p>Books</p>
 {% set booklist = collections.book %}
 {% include "components/booklist.njk" %}
-
-<br>
-<p class="serif">Reach out</p>
-
-<li><a rel="me" href="https://mas.to/@advik">Mastodon</a></li>
-<li class="monospace">adviks [at] duck [dot] com</li>
-<li>You can also subscribe to my newsletter below.</li>
-<br>
 -->
+<br>
+<p class="serif" style="margin-bottom: 0;">Reach out</p>
+<small>
+You can reach out to me on <a rel="me" href="https://mas.to/@advik">Mastodon</a>. Or you can send me an email: <span class="email">adviks [at] duck [dot] com</span></small>
+<br>
+
+<p class="serif" style="margin-bottom: 0;">Newsletter</p>
+<small>A not-so-regular newsletter.</small>
+<br>
+{% include "components/sub.njk" %}
+
 
 
 
