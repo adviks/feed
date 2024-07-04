@@ -4,21 +4,20 @@ section: home
 ---
 
 {{ layoutContent | safe }}
-<h2 class="no_margin name">Advik Samar</h2>
-<!-- <p class="grey no_margin subtext" >politics, philosophy, international relations, and privacy</p> 
-<h3 class="serif">Posts</h3> -->
+<p style="margin-top:0;">politics, philosophy, international relations, and privacy</p> 
+<p class="fw500">Writing</p>
 {% set postslist = collections.post %}
 {% include "components/postslist.njk" %}
 <!--
-<p class="serif">Books</p>
+<p>Books</p>
 {% set booklist = collections.book %}
 {% include "components/booklist.njk" %}
-
-<br>
-<p class="no_margin serif">Reach out</p>
-<span class="grey"><small>drop me a line: </small></span><a class="f_links" href="mailto:adviks@duck.com" class="reach">mail</a>
-<a class="f_links grey" href="https://advik.substack.com/" target="_blank">newsletter</a>
-<a class="f_links grey" href="#" target="_blank">telegram</a>
-
-
 -->
+<br>
+<p class="fw500">Reach out</p>
+<p>You can reach out to me on <a rel="me" href="https://mas.to/@advik">Mastodon</a>. You can also subscribe to my newsletter below.</p>
+{% include "components/sub.njk" %}
+
+
+
+

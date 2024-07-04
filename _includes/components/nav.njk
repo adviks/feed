@@ -1,10 +1,31 @@
+<style>
+nav{
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+nav > ul {
+display: flex;
+flex-wrap: wrap;
+justify-content: flex-start;
+padding-left: 0;
+
+}
+
+nav > ul > li{
+list-style-type: none;
+margin-left: 15px;
+}
+
+nav > ul > li > a {
+color: black;
+}
+
+</style>
+
 <nav>
-  {% set navPages = collections.all | eleventyNavigation %}
+  <a href="{{ '/' | url }}" class="site-name">{{ metadata.title }}</a>
   <ul>
-    {%- for entry in navPages %}
-      <li>
-        <a href="{{ entry.url | url }}"{% if entry.url == page.url %} data-current="current item"{% endif %}>{{ entry.title }}</a>
-      </li>
-    {%- endfor %}
+      <a href="https://mas.to/@advik" target="_blank"><i class="ph-duotone ph-mastodon-logo"></i></a>
   </ul>
 </nav>

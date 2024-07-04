@@ -3,9 +3,10 @@ const CleanCSS = require("clean-css");
 const UglifyJS = require("uglify-js");
 const htmlmin = require("html-minifier");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+const readingTime = require('eleventy-plugin-reading-time');
 
 module.exports = function(eleventyConfig) {
-
+  eleventyConfig.addPlugin(readingTime);
   // Eleventy Navigation https://www.11ty.dev/docs/plugins/navigation/
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
 

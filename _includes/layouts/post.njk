@@ -4,10 +4,10 @@ section: post
 ---
 
 <article>
-  <h1 class="title">{{ title }}</h1>
+  <p class="title">{{ title }}</p>
 
-   <small>   <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time> </small>
-  <!--  by <a href="/authors/{{ author | slug }}/">{{ author }}</a> -->
+   <small>   <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time> · {{ content | readingTime }} read</small>
+  
  
 <div class="content">{{ layoutContent | safe }}</div>
   
@@ -27,6 +27,7 @@ section: post
 <br>
 <hr>
 <br>
+ <p>Subscribe to my newsletter for a monthly round-up of new blog posts and projects I’m working on! </p>
 {% include "components/sub.njk" %}
 
 <br>

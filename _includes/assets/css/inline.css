@@ -2,7 +2,7 @@
 @import url('https://rsms.me/inter/inter.css');
 @import url('https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap');
 body {
-  margin: 40px auto;
+  margin: 20px auto;
   max-width: 650px;
   line-height: 1.4;
   font-size: 16px;
@@ -18,7 +18,10 @@ h3 {
 }
 
 .title{
-  font-size: 2em;
+  font-size: 1.5em;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 a{
   color: #0039a6;
@@ -43,7 +46,7 @@ hr::after {
 
 .content{
   font-family: "STIX Two Text", serif;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 input{
   border: none;
@@ -68,13 +71,31 @@ time{
   color: #aeaeb2;
 }
 
+small{
+  color: #aeaeb2;
+}
+
 footer{
   border-top: 1px solid #e5e5ea;
   margin-top: 20px;
 }
 
 .post_link{
-  font-size: 1.2rem;
   color: black;
+  text-decoration: underline;
+}
+
+.ph-fill, .ph-duotone{
+  font-size: 24px;
+  color: #0039a6;
+}
+
+.site-name{
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+
+.fw500{
   font-weight: 500;
 }
