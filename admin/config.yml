@@ -3,6 +3,7 @@
 # The backend option specifies how to access the content for your site
 backend:
   name: github
+  repo: adviks/feed
   branch: main # The branch to update (optional; defaults to master)#editorial-workflow
 # publish_mode: editorial_workflow
 
