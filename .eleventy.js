@@ -7,11 +7,11 @@ const readingTime = require('eleventy-plugin-reading-time');
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function(eleventyConfig) {
+
   eleventyConfig.addPlugin(pluginRss);
-  
   eleventyConfig.addPlugin(readingTime);
   // Eleventy Navigation https://www.11ty.dev/docs/plugins/navigation/
-  eleventyConfig.addPlugin(eleventyNavigationPlugin);
+  // eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
   // Configuration API: use eleventyConfig.addLayoutAlias(from, to) to add
   // layout aliases! Say you have a bunch of existing content using
@@ -23,8 +23,7 @@ module.exports = function(eleventyConfig) {
   // https://www.11ty.dev/docs/data-deep-merge/
   eleventyConfig.setDataDeepMerge(true);
 
-
-
+  
   // Date formatting (human readable)
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj).toFormat("dd LLL yyyy");
@@ -104,6 +103,4 @@ module.exports = function(eleventyConfig) {
       output: "_site"
     }
   };
-
-  
 };

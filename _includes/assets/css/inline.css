@@ -52,10 +52,6 @@ hr::after {
 
 .serif{
   font-family: "STIX Two Text", serif;
-  font-weight: 500;
-  font-size:1.1em;
-  margin-top: 0;
-  margin-bottom: 0;
 }
 input{
   border: none;

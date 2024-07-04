@@ -2,6 +2,8 @@
   "title": "Advik Samar",
   "description": "Advik Samar delves into politics, philosophy, international relations, and privacy with insightful perspectives.",
   "url": "https://advik.uk/",
+  "author": "Advik Samar",
+  "email" : "plsgq@example.com",
   "feed": {
     "subtitle": "Advik Samar delves into politics, philosophy, international relations, and privacy with insightful perspectives.",
     "filename": "feed.xml",
