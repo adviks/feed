@@ -10,9 +10,12 @@ flex-wrap: wrap;
 justify-content: flex-start;
 padding-left: 0;
 }
-ul > li{
+ul > small > li{
 list-style-type: none;
 margin-left: 15px;
+}
+.small-footer{
+display: flex;
 }
 
 </style>
@@ -20,8 +23,11 @@ margin-left: 15px;
 <footer>
   <small class="grey">&copy; Advik Samar 2024</small>
   <ul>
-  <li>First</li>
-  
+  <small class="small-footer">
+  <li>About</li>
+  <li>Now</li>
+  <li>RSS</li>
+  </small>
   </ul>
   
 </footer>

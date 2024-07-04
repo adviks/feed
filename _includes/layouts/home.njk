@@ -4,20 +4,23 @@ section: home
 ---
 
 {{ layoutContent | safe }}
-<p style="margin-top:0;">politics, philosophy, international relations, and privacy</p> 
-<p class="fw500">Writing</p>
+<p style="margin-top:0;"><em>politics, philosophy, international relations, and privacy</em></p> 
+<!-- <p class="serif">Writing</p> -->
 {% set postslist = collections.post %}
 {% include "components/postslist.njk" %}
 <!--
 <p>Books</p>
 {% set booklist = collections.book %}
 {% include "components/booklist.njk" %}
--->
-<br>
-<p class="fw500">Reach out</p>
-<p>You can reach out to me on <a rel="me" href="https://mas.to/@advik">Mastodon</a>. You can also subscribe to my newsletter below.</p>
-{% include "components/sub.njk" %}
 
+<br>
+<p class="serif">Reach out</p>
+
+<li><a rel="me" href="https://mas.to/@advik">Mastodon</a></li>
+<li class="monospace">adviks [at] duck [dot] com</li>
+<li>You can also subscribe to my newsletter below.</li>
+<br>
+-->
 
 
 

@@ -4,8 +4,31 @@ const UglifyJS = require("uglify-js");
 const htmlmin = require("html-minifier");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const readingTime = require('eleventy-plugin-reading-time');
+const { feedPlugin } = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function(eleventyConfig) {
+  // RSS
+  eleventyConfig.addPlugin(feedPlugin, {
+    type: "atom", // or "rss", "json"
+    outputPath: "/feed.xml",
+    collection: {
+      name: "posts", // iterate over `collections.posts`
+      limit: 10,     // 0 means no limit
+    },
+    metadata: {
+      language: "en",
+      title: "Advik Samar",
+      subtitle: "Advik Samar delves into politics, philosophy, international relations, and privacy with insightful perspectives.",
+      base: "https://advik.uk/",
+      author: {
+        name: "Advik Samar",
+        email: "", // Optional
+      }
+    }
+  });
+
+  // RSS end
+  
   eleventyConfig.addPlugin(readingTime);
   // Eleventy Navigation https://www.11ty.dev/docs/plugins/navigation/
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
