@@ -4,30 +4,10 @@ const UglifyJS = require("uglify-js");
 const htmlmin = require("html-minifier");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const readingTime = require('eleventy-plugin-reading-time');
-const { feedPlugin } = require("@11ty/eleventy-plugin-rss");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function(eleventyConfig) {
-  // RSS
-  eleventyConfig.addPlugin(feedPlugin, {
-    type: "atom", // or "rss", "json"
-    outputPath: "/feed.xml",
-    collection: {
-      name: "posts", // iterate over `collections.posts`
-      limit: 10,     // 0 means no limit
-    },
-    metadata: {
-      language: "en",
-      title: "Advik Samar",
-      subtitle: "Advik Samar delves into politics, philosophy, international relations, and privacy with insightful perspectives.",
-      base: "https://advik.uk/",
-      author: {
-        name: "Advik Samar",
-        email: "", // Optional
-      }
-    }
-  });
-
-  // RSS end
+  eleventyConfig.addPlugin(pluginRss);
   
   eleventyConfig.addPlugin(readingTime);
   // Eleventy Navigation https://www.11ty.dev/docs/plugins/navigation/
@@ -43,23 +23,7 @@ module.exports = function(eleventyConfig) {
   // https://www.11ty.dev/docs/data-deep-merge/
   eleventyConfig.setDataDeepMerge(true);
 
-  // Add support for maintenance-free post authors
-  // Adds an authors collection using the author key in our post frontmatter
-  // Thanks to @pdehaan: https://github.com/pdehaan
-  eleventyConfig.addCollection("authors", collection => {
-    const blogs = collection.getFilteredByGlob("posts/*.md");
-    return blogs.reduce((coll, post) => {
-      const author = post.data.author;
-      if (!author) {
-        return coll;
-      }
-      if (!coll.hasOwnProperty(author)) {
-        coll[author] = [];
-      }
-      coll[author].push(post.data);
-      return coll;
-    }, {});
-  });
+
 
   // Date formatting (human readable)
   eleventyConfig.addFilter("readableDate", dateObj => {
@@ -140,4 +104,6 @@ module.exports = function(eleventyConfig) {
       output: "_site"
     }
   };
+
+  
 };

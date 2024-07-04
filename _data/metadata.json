@@ -1,5 +1,12 @@
 {
   "title": "Advik Samar",
   "description": "Advik Samar delves into politics, philosophy, international relations, and privacy with insightful perspectives.",
-  "url": "https://advik.uk/"
+  "url": "https://advik.uk/",
+  "feed": {
+    "subtitle": "Advik Samar delves into politics, philosophy, international relations, and privacy with insightful perspectives.",
+    "filename": "feed.xml",
+    "path": "/feed.xml",
+    "url": "https://advik.uk/feed.xml",
+    "id": "https://advik.uk"
+  }
 }
