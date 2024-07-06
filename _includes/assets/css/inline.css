@@ -93,9 +93,8 @@ input {
   background: var(--input-background);
   padding: 7px 10px;
   border-radius: 4px;
-  font-size: 1em;
   font-family: Inter, sans-serif;
-  color: var(--text-color);
+  color: var(--small-color);
 }
 
 button {
