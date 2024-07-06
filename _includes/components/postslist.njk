@@ -2,7 +2,7 @@
 	{% for post in postslist | reverse %}
 		<article{% if post.url == url %} data-current="current item"{% endif %} class="post_list">
 				<a href="{{ post.url | url }}" class="post_link">{{ post.data.title }}</a>
-				<small style="margin-left: 5px">
+				<small class="post_date">
 					<time datetime="{{ post.date | machineDate }}">
 						{{ post.date | readableDate }}
 					</time>

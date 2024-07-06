@@ -115,3 +115,9 @@ footer{
 .email {
   color: #888;
 }
+
+.post_list{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
