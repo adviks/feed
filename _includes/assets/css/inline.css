@@ -3,6 +3,37 @@
 @import url('https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
 
+
+:root {
+  --background-color: white;
+  --text-color: black;
+  --link-color: #0039a6;
+  --hr-gradient: linear-gradient(to right, #f0f0f0, #8f8f8f, #f0f0f0);
+  --hr-symbol-background: white;
+  --input-background: #e5e5ea;
+  --button-background: #0039a6;
+  --button-text-color: white;
+  --time-color: #aeaeb2;
+  --small-color: #aeaeb2;
+  --footer-border-color: #e5e5ea;
+  --email-color: #888;
+}
+
+.dark-mode {
+  --background-color: #1a1a1a;
+  --text-color: #f0f0f0;
+  --link-color: #4a9eff;
+  --hr-gradient: linear-gradient(to right, #2a2a2a, #5f5f5f, #2a2a2a);
+  --hr-symbol-background: #1a1a1a;
+  --input-background: #2a2a2a;
+  --button-background: #4a9eff;
+  --button-text-color: #1a1a1a;
+  --time-color: #6e6e76;
+  --small-color: #6e6e76;
+  --footer-border-color: #2a2a2a;
+  --email-color: #6e6e76;
+}
+
 body {
   margin: 20px auto;
   max-width: 650px;
@@ -11,29 +42,32 @@ body {
   padding: 0 10px;
   max-height: 100vh;
   font-family: "Familjen Grotesk", "Inter", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
-h1,
-h2,
-h3 {
-  line-height: 1.2
+h1, h2, h3 {
+  line-height: 1.2;
 }
 
-.title{
+.title {
   font-size: 2em;
   font-weight: 500;
   margin-top: 0;
   margin-bottom: 0;
 }
-a{
-  color: #0039a6;
+
+a {
+  color: var(--link-color);
   text-decoration: none;
 }
+
 hr {
   border: none;
   height: 1px;
-  background-image: linear-gradient(to right, #f0f0f0, #8f8f8f, #f0f0f0);
+  background-image: var(--hr-gradient);
 }
+
 hr::after {
   content: '§';
   display: inline-block;
@@ -42,81 +76,80 @@ hr::after {
   transform: translate(-50%, -50%) rotate(60deg);
   transform-origin: 50% 50%;
   padding: 1rem;
-  background-color: white;
+  background-color: var(--hr-symbol-background);
 }
 
-
-.content{
+.content {
   font-family: "STIX Two Text", serif;
   font-size: 1.1rem;
 }
 
-.serif{
+.serif {
   font-family: "STIX Two Text", serif;
 }
-input{
+
+input {
   border: none;
-  background: #e5e5ea;
+  background: var(--input-background);
   padding: 7px 10px;
   border-radius: 4px;
   font-size: 1em;
   font-family: Inter, sans-serif;
+  color: var(--text-color);
 }
-button{
-  background: #0039a6;
+
+button {
+  background: var(--button-background);
   border: none;
   padding: 7px 10px;
-  color: white;
+  color: var(--button-text-color);
   font-weight: 500;
   border-radius: 4px;
-  font-size:1em;
+  font-size: 1em;
   font-family: Inter, sans-serif;
 }
 
-time{
-  color: #aeaeb2;
+time {
+  color: var(--time-color);
 }
 
-small{
-  color: #aeaeb2;
+small {
+  color: var(--small-color);
 }
 
-footer{
-  border-top: 1px solid #e5e5ea;
+footer {
+  border-top: 1px solid var(--footer-border-color);
   margin-top: 20px;
 }
 
-.post_link{
-  color: black;
-  /* text-decoration: underline; */
+.post_link {
+  color: var(--text-color);
   font-size: 1.1em;
 }
 
-.ph-fill, .ph-duotone{
+.ph-fill, .ph-duotone {
   font-size: 24px;
-  color: #0039a6;
+  color: var(--link-color);
 }
 
-.site-name{
+.site-name {
   font-size: 1.2em;
   font-weight: 500;
 }
 
-
-.fw500{
+.fw500 {
   font-weight: 500;
 }
 
-.monospace{
+.monospace {
   font-family: Courier, monospace;
 }
 
-
 .email {
-  color: #888;
+  color: var(--email-color);
 }
 
-.post_list{
+.post_list {
   display: flex;
   align-items: center;
   justify-content: space-between;
