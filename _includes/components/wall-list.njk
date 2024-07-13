@@ -1,0 +1,83 @@
+<style>
+
+section{
+border: 1px solid var(--small-color);
+border-radius: 10px;
+
+}
+  article {
+    margin: auto;
+    padding: 20px;
+    border-bottom: 1px solid var(--small-color);
+  }
+
+
+  article:last-child {
+    border-bottom: none;
+  }
+
+ .tweet-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+.profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+ .username {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+
+ .tweet-content {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+ .tweet-content a {
+    color: #1da1f2;
+    text-decoration: none;
+  }
+
+ .tweet-content a:hover {
+    text-decoration: underline;
+  }
+
+ .tweet-metadata {
+    font-size: 14px;
+    color: #999;
+    margin-top: 10px;
+  }
+
+ .tweet-metadata time {
+    font-size: 14px;
+    color: #999;
+  }
+
+
+</style>
+
+<section>
+  {% for post in postslist | reverse %}
+    <article>
+      <div class="tweet-header">
+        <img src="/static/img/avatar.jpg" class="profile-picture" alt="Profile Picture">
+        <div class="username">
+          <span>Advik Samar</span>
+        </div>
+      </div>
+      <div class="tweet-content">
+        {{ post.content | safe }}
+      </div>
+      <div class="tweet-metadata">
+        <time datetime="{{ post.date | machineDate }}">{{ post.date | readableDate }}</time>
+      </div>
+    </article>
+  {% endfor %}
+</section>

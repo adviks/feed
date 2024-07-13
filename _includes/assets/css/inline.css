@@ -1,9 +1,9 @@
-
+/* Imports */
 @import url('https://rsms.me/inter/inter.css');
 @import url('https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
 
-
+/* Root variables */
 :root {
   --background-color: white;
   --text-color: black;
@@ -19,6 +19,7 @@
   --email-color: #888;
 }
 
+/* Dark mode variables */
 .dark-mode {
   --background-color: #1a1a1a;
   --text-color: #f0f0f0;
@@ -34,6 +35,7 @@
   --email-color: #6e6e76;
 }
 
+/* Base styles */
 body {
   margin: 20px auto;
   max-width: 650px;
@@ -41,7 +43,7 @@ body {
   font-size: 16px;
   padding: 0 10px;
   max-height: 100vh;
-  font-family: "Familjen Grotesk", "Inter", sans-serif;
+  font-family: "Inter","Familjen Grotesk", sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
 }
@@ -50,33 +52,17 @@ h1, h2, h3 {
   line-height: 1.2;
 }
 
-.title {
-  font-size: 2em;
-  font-weight: 500;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
 a {
   color: var(--link-color);
   text-decoration: none;
 }
 
-hr {
-  border: none;
-  height: 1px;
-  background-image: var(--hr-gradient);
-}
-
-hr::after {
-  content: '§';
-  display: inline-block;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(60deg);
-  transform-origin: 50% 50%;
-  padding: 1rem;
-  background-color: var(--hr-symbol-background);
+/* Typography */
+.title {
+  font-size: 2em;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .content {
@@ -88,6 +74,20 @@ hr::after {
   font-family: "STIX Two Text", serif;
 }
 
+.site-name {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.fw500 {
+  font-weight: 500;
+}
+
+.monospace {
+  font-family: Courier, monospace;
+}
+
+/* Form elements */
 input {
   border: none;
   background: var(--input-background);
@@ -108,6 +108,74 @@ button {
   font-family: Inter, sans-serif;
 }
 
+/* Horizontal rule */
+hr {
+  border: none;
+  height: 1px;
+  background-image: var(--hr-gradient);
+  position: relative;
+}
+
+hr::after {
+  content: '§';
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(60deg);
+  transform-origin: 50% 50%;
+  padding: 1rem;
+  background-color: var(--hr-symbol-background);
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav > ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-left: 0;
+}
+
+nav > ul > li {
+  list-style-type: none;
+  margin-left: 15px;
+}
+
+nav > ul > li > a {
+  color: var(--text-color);
+}
+
+/* Footer */
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--footer-border-color);
+  margin-top: 20px;
+}
+
+footer > ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-left: 0;
+}
+
+footer ul > small > li {
+  list-style-type: none;
+  margin-left: 15px;
+}
+
+.small-footer {
+  display: flex;
+}
+
+/* Utility classes */
 time {
   color: var(--time-color);
 }
@@ -116,14 +184,8 @@ small {
   color: var(--small-color);
 }
 
-footer {
-  border-top: 1px solid var(--footer-border-color);
-  margin-top: 20px;
-}
-
-.post_link {
-  color: var(--text-color);
-  font-size: 1.1em;
+.email {
+  color: var(--email-color);
 }
 
 .ph-fill, .ph-duotone {
@@ -131,25 +193,41 @@ footer {
   color: var(--link-color);
 }
 
-.site-name {
-  font-size: 1.2em;
-  font-weight: 500;
-}
-
-.fw500 {
-  font-weight: 500;
-}
-
-.monospace {
-  font-family: Courier, monospace;
-}
-
-.email {
-  color: var(--email-color);
-}
-
+/* Post list */
 .post_list {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.post_link {
+  color: var(--text-color);
+  font-size: 1.1em;
+}
+
+/* Sign-up form */
+#signup-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subEmail {
+  flex-grow: 0.7;
+}
+
+.submitButton {
+  flex-grow: 0.2;
+}
+
+/* Success message */
+#success-message {
+  display: none;
+  background-color: #27a04f36;
+  padding: 0.5em;
+  border-radius: 10px;
+  border: 1px solid #27a04f;
+}
+
+#success-message p {
+  margin: 0;
 }
