@@ -1,6 +1,5 @@
 {
   "layout": "layouts/post.njk",
   "permalink": "/{{ title | slug }}/index.html",
-  "author": "Advik",
-  "tags": ["wall"]
+  "author": "Advik"
 }
