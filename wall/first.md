@@ -6,4 +6,4 @@ tags:
 
 this is going to be the content that is going to be shown on the wall post. I really really love it.
 
-![This is the image](https://placehold.co/600x400)
+![This is the image](https://placehold.co/400x500)
