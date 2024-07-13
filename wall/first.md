@@ -1,5 +1,4 @@
 ---
-title: how can it not be possible
 date: 2024-07-03T17:58:59.821Z
 tags:
   - wall
