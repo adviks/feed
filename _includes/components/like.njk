@@ -1,38 +1,78 @@
-<button class="like-button" data-post-id="{{ post.id }}">
-  ❤️ Like (<span class="like-count">0</span>)
-</button>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<div id="likeButton" onclick="likePost()" style="
+    background-color: transparent;
+    color: var(--text-color);
+    border: none;
+    border-radius: 25px;
+    padding: 10px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+">
+    <i id="likeIcon" class="ph-duotone ph-thumbs-up"></i>
+    <span id="likesCount">0</span>
+</div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwnrUs6swj0tLvgbGgaJJcZ35tMqo7bVlxCaOY8dfEz9OkL9HqO4SNwKpTPyT82dDvwUg/exec"; // Change this once
+    const scriptURL = "https://script.google.com/macros/s/AKfycbx4ffGW6g93sNr2eucVpf6Mw_oPjefbmCK2FSrFyD4LOYbHnKCvzY9bGE_FXi91oB2OGQ/exec";
 
-    document.querySelectorAll(".like-button").forEach((button) => {
-      const postId = button.getAttribute("data-post-id");
-      const countSpan = button.querySelector(".like-count");
+    function getPostSlug() {
+        let path = window.location.pathname;
+        return path.replace(/^\/|\/$/g, ""); 
+    }
 
-      // Fetch existing likes
-      fetch(`${scriptURL}?postID=${postId}`)
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            countSpan.textContent = data.likes;
-          }
-        });
+    const postID = getPostSlug();
+    const localStorageLikeKey = `liked_${postID}`;
+    const localStorageCountKey = `likesCount_${postID}`;
+    
+    let liked = localStorage.getItem(localStorageLikeKey) === "true"; 
+    let storedLikes = localStorage.getItem(localStorageCountKey);
 
-      // Handle like button click
-      button.addEventListener("click", function () {
-        fetch(scriptURL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ postID: postId })
-        })
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            countSpan.textContent = data.likes;
-          }
-        });
-      });
+    document.addEventListener("DOMContentLoaded", function () {
+        if (storedLikes) {
+            document.getElementById("likesCount").innerText = storedLikes; // Show stored count instantly
+        }
+        if (liked) {
+            document.getElementById("likeIcon").className = "ph-fill ph-thumbs-up";
+            document.getElementById("likeButton").style.cursor = "not-allowed";
+        }
+        fetchLikes(); // Fetch fresh count in the background
     });
-  });
+
+    function fetchLikes() {
+        $.ajax({
+            url: `${scriptURL}?callback=loadData&postID=${postID}&action=get`,
+            dataType: "jsonp"
+        });
+    }
+
+    function likePost() {
+        if (liked) return; // Prevent multiple likes
+
+        liked = true;
+        let newLikes = parseInt(document.getElementById("likesCount").innerText) + 1;
+        document.getElementById("likesCount").innerText = newLikes; // Instantly update UI
+        localStorage.setItem(localStorageLikeKey, "true");
+        localStorage.setItem(localStorageCountKey, newLikes); // Store updated count locally
+
+        $.ajax({
+            url: `${scriptURL}?callback=loadData&postID=${postID}&action=like`,
+            dataType: "jsonp"
+        });
+
+        document.getElementById("likeIcon").className = "ph-fill ph-thumbs-up";
+        document.getElementById("likeButton").style.cursor = "not-allowed";
+    }
+
+    function loadData(response) {
+        if (response.success) {
+            document.getElementById("likesCount").innerText = response.likes;
+            localStorage.setItem(localStorageCountKey, response.likes); // Update localStorage with real count
+        } else {
+            console.error(response.message);
+        }
+    }
 </script>
