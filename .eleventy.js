@@ -10,25 +10,24 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(readingTime);
-  
+
   eleventyConfig.setDataDeepMerge(true);
 
-  
   // Date formatting (human readable)
   eleventyConfig.addFilter("readableDate", (dateObj) => {
-    return DateTime.fromJSDate(new Date(dateObj)).toFormat("dd LLL yyyy"); // e.g., "05 Mar 2025"
+    return DateTime.fromJSDate(new Date(dateObj)).toFormat("dd LLL yyyy");
   });
 
   // Time formatting (human readable)
   eleventyConfig.addFilter("readableTime", (dateObj) => {
-    return DateTime.fromJSDate(new Date(dateObj)).toFormat("hh:mm a"); // e.g., "02:30 PM"
+    return DateTime.fromJSDate(new Date(dateObj)).toFormat("hh:mm a");
   });
 
   // Date formatting (machine readable)
   eleventyConfig.addFilter("machineDate", (dateObj) => {
-    return DateTime.fromJSDate(new Date(dateObj)).toFormat("yyyy-MM-dd"); // e.g., "2025-03-05"
+    return DateTime.fromJSDate(new Date(dateObj)).toFormat("yyyy-MM-dd");
   });
-  
+
   // Minify CSS
   eleventyConfig.addFilter("cssmin", function(code) {
     return new CleanCSS({}).minify(code).styles;
@@ -57,11 +56,10 @@ module.exports = function(eleventyConfig) {
     return content;
   });
 
-  // Don't process folders with static assets e.g. images
+  // Don't process folders with static assets
   eleventyConfig.addPassthroughCopy("favicon.ico");
   eleventyConfig.addPassthroughCopy("static/img");
   eleventyConfig.addPassthroughCopy("admin/");
-  // We additionally output a copy of our CSS for use in Decap CMS previews
   eleventyConfig.addPassthroughCopy("_includes/assets/css/inline.css");
 
   /* Markdown Plugins */
@@ -79,15 +77,37 @@ module.exports = function(eleventyConfig) {
     .use(markdownItAnchor, opts)
   );
 
+  // Add Related Posts Collection
+  eleventyConfig.addCollection("relatedPosts", function (collectionApi) {
+    let posts = collectionApi.getAll(); // Get all posts
+
+    posts.forEach(post => {
+      post.data.related = posts
+        .filter(otherPost =>
+          otherPost.url !== post.url && // Exclude itself
+          post.data.tags &&
+          otherPost.data.tags &&
+          hasCommonTagsExcludingPost(post.data.tags, otherPost.data.tags) // Check common tags
+        )
+        .slice(0, 3); // Limit to 3 related posts
+    });
+
+    return posts;
+  });
+
+  // Helper function to check for common tags excluding "post"
+  function hasCommonTagsExcludingPost(tags1, tags2) {
+    let filteredTags1 = tags1.filter(tag => tag !== "post");
+    let filteredTags2 = tags2.filter(tag => tag !== "post");
+
+    return filteredTags1.some(tag => filteredTags2.includes(tag));
+  }
+
+
+
   return {
     templateFormats: ["md", "njk", "liquid"],
-
-    // If your site lives in a different subdirectory, change this.
-    // Leading or trailing slashes are all normalized away, so don’t worry about it.
-    // If you don’t have a subdirectory, use "" or "/" (they do the same thing)
-    // This is only used for URLs (it does not affect your file structure)
     pathPrefix: "/",
-
     markdownTemplateEngine: "liquid",
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk",

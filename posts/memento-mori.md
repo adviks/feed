@@ -3,6 +3,7 @@ title: "Memento mori "
 date: 2022-06-01T05:41:00.000Z
 tags:
   - post
+  - philosophy
 ---
 
 

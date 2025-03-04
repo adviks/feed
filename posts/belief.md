@@ -4,6 +4,7 @@ metaDescription: Our beliefs shape our identity.
 date: 2022-05-21T05:41:00.000Z
 tags:
   - post
+  - philosophy
 ---
 
 

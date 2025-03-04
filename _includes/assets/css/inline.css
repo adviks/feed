@@ -6,7 +6,7 @@
 
 /* Root variables */
 :root {
-  --background-color: #fff;
+  --background-color: #f5f5dc;
   --text-color: #333;
   --link-color: #e54f2d; /* New accent color */
   --hr-gradient: linear-gradient(to right, #e0e0e0, #c0c0c0, #e0e0e0);
@@ -51,6 +51,7 @@ body {
 
 h1, h2, h3 {
   line-height: 1.2;
+  
 }
 .avatar{
   max-height: 48px;
@@ -86,6 +87,7 @@ a {
 
 .serif {
   font-family: "Instrument Serif", "STIX Two Text", "Newsreader",serif;
+  font-size:1.2em
 }
 
 .site-name {

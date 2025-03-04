@@ -1,32 +1,26 @@
-
+<style>
+ul{
+padding-left: 0;
+}
+li{
+list-style:none;
+border-bottom: 1px solid #e54f2d;
+max-width: fit-content;
+margin-bottom: 5px;
+}
+</style>
+{% if related and related.length > 0 %}
 <section>
-  <h3>Related posts</h3>
-  {% set currentTags = post.data.tags %}
-  {% set relatedPosts = [] %}
-  {% set maxPosts = 3 %}
-  {% set postCount = 0 %}
-
-  {% for post in postslist %}
-    {% if post.url != url and post.data.tags and postCount < maxPosts %}
-      {% for tag in post.data.tags %}
-        {% if currentTags.includes(tag) and postCount < maxPosts %}
-          {% set relatedPosts = (relatedPosts.push(post), relatedPosts) %}
-          {% set postCount = postCount + 1 %}
-          {% set outer_loop = loop %}
-          {% if outer_loop.break %}{% endif %}
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-  {% endfor %}
-
-  {% for post in relatedPosts | slice(0, 3) %}
-    <article class="post_list">
-        <a href="{{ post.url | url }}" class="post_link">{{ post.data.title }}</a>
-        <small class="post_date">
-          <time datetime="{{ post.date | machineDate }}">
-            {{ post.date | readableDate }}
-          </time>
-        </small>
-    </article>
-  {% endfor %}
+    <p class="serif">Related Posts</p>
+    <ul>
+        {% for post in related %}
+        <li>
+            <a href="{{ post.url | url }}">{{ post.data.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
 </section>
+{% else %}
+<p class="serif">✸ Related Posts ✸</p>
+<p>No related posts found. ¯\_(ツ)_/¯</p>
+{% endif %}

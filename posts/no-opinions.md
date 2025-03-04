@@ -3,6 +3,7 @@ title: No Opinions
 date: 2022-06-09T05:41:00.000Z
 tags:
   - post
+  - philosophy
 ---
 
 
