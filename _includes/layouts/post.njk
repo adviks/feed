@@ -4,10 +4,11 @@ section: post
 ---
 <article>
   <p class="title">{{ title }}</p>
-   <small>   <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time> · {{ content | readingTime }} read</small>
+   <small>   <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time> ✸ {{ content | readingTime }} read</small>
   
 <div class="content">{{ layoutContent | safe }}</div>
 
+{% include "components/like.njk" %}
 </article>
 <br>
 <hr>

@@ -2,6 +2,7 @@
 
 section{
 border: 1px solid var(--small-color);
+border-radius: 5px;
 
 }
   article {
@@ -35,7 +36,7 @@ border: 1px solid var(--small-color);
 
 
  .tweet-content {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 24px;
   }
 
@@ -73,15 +74,18 @@ border: 1px solid var(--small-color);
       <div class="tweet-header">
         <img src="/static/img/avatar.jpg" class="profile-picture" alt="Profile Picture">
         <div class="username">
-          <span>Advik Samar</span>
+          <span>@advik</span>
         </div>
       </div>
       <div class="tweet-content">
         {{ post.content | safe }}
       </div>
       <div class="tweet-metadata">
-        <time datetime="{{ post.date | machineDate }}">{{ post.date | readableDate }}</time>
-      </div>
+  <time datetime="{{ post.date | machineDate }}">
+    {{ post.date | readableDate }} at {{ post.date | readableTime }}
+  </time>
+</div>
+
     </article>
   {% endfor %}
 </section>

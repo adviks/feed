@@ -1,0 +1,38 @@
+<button class="like-button" data-post-id="{{ post.id }}">
+  ❤️ Like (<span class="like-count">0</span>)
+</button>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyJepILQvRh2_Yi86GfwWypx61wwLjNw3mlUw-6-INHhW0HBmaxbrkoocykaSJYvcmW9w/exec"; // Change this once
+
+    document.querySelectorAll(".like-button").forEach((button) => {
+      const postId = button.getAttribute("data-post-id");
+      const countSpan = button.querySelector(".like-count");
+
+      // Fetch existing likes
+      fetch(`${scriptURL}?postID=${postId}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            countSpan.textContent = data.likes;
+          }
+        });
+
+      // Handle like button click
+      button.addEventListener("click", function () {
+        fetch(scriptURL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ postID: postId })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            countSpan.textContent = data.likes;
+          }
+        });
+      });
+    });
+  });
+</script>

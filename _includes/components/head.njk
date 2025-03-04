@@ -1,13 +1,25 @@
 <head>
-  <link rel="icon" type="image/x-icon" href="https://emojicdn.elk.sh/%F0%9F%A5%BD">
+  <link rel="icon" type="image/x-icon" href="https://emojicdn.elk.sh/%F0%9F%93%9F">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="index, follow">
   <meta name="author" content="Advik Samar">
   <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  <title>{{ title or metadata.title }}</title>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css"
+  />
+  <title>
+  {% if page.url == "/" %}
+    {{ title }}
+  {% else %}
+    {{ title }} ✸ {{ metadata.title }}
+  {% endif %}
+</title>
+
+
   <meta
     name="description"
     content="{{ metaDescription or eleventyComputed.metaDescription or metadata.description }}"
