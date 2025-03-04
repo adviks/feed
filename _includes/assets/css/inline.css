@@ -42,7 +42,7 @@ body {
   max-width: 650px;
   line-height: 1.5;
   font-size: 16px;
-  padding: 0 10px;
+  padding: 0 1em;
   max-height: 100vh;
   font-family: "Instrument Sans", "Inter", "Familjen Grotesk", sans-serif;
   background-color: var(--background-color);
@@ -69,12 +69,14 @@ a {
 
 /* Typography */
 .title {
+  /* font-family: "Newsreader", "Instrument Serif",serif; */
   font-size:4em;
-  line-height: 1.2;
+  line-height: 1.1;
   font-weight: 500;
   letter-spacing: -4px;
   margin-top: 0;
   margin-bottom: 0;
+  /* text-transform: uppercase; */
 }
 
 .content {

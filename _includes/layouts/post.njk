@@ -1,23 +1,30 @@
----
-layout: layouts/base.njk
-section: post
----
-<article>
-  <p class="title">{{ title }}</p>
-   <small>   <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time> ✸ {{ content | readingTime }} read</small>
-  
-<div class="content">{{ layoutContent | safe }}</div>
+<section>
+  <h3>Related posts</h3>
+  {% set currentTags = post.data.tags %}
+  {% set relatedPosts = [] %}
 
-{% include "components/like.njk" %}
-</article>
-<br>
-<hr>
-<br>
- <p>Subscribe to my newsletter for a monthly round-up of new blog posts and projects I’m working on! </p>
-{% include "components/sub.njk" %}
+  {% for postItem in postslist %}
+    {% if postItem.url != url and postItem.data.tags %}
+      {% for tag in postItem.data.tags %}
+        {% if currentTags.includes(tag) %}
+          {% set relatedPosts = relatedPosts.concat(postItem) %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    {% if relatedPosts.length >= 3 %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
 
-<br>
-<nav>
-  <a href="{{ '/' | url }}" class="back_link">← back</a>
-</nav>
-
+  {% for postItem in relatedPosts | slice(0,3) %}
+    <article class="post_list">
+        <a href="{{ postItem.url | url }}" class="post_link">{{ postItem.data.title }}</a>
+        <small class="post_date">
+          <time datetime="{{ postItem.date | machineDate }}">
+            {{ postItem.date | readableDate }}
+          </time>
+        </small>
+    </article>
+  {% endfor %}
+</section>

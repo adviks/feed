@@ -1,0 +1,30 @@
+<section>
+  <h3>Related posts</h3>
+  {% assign currentTags = post.data.tags %}
+  {% assign relatedPosts = "" | split: "" %}
+
+  {% for post in postslist %}
+    {% if post.url != url and post.data.tags %}
+      {% for tag in post.data.tags %}
+        {% if currentTags contains tag %}
+          {% assign relatedPosts = relatedPosts | push: post %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    {% if relatedPosts.size >= 3 %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% for post in relatedPosts limit:3 %}
+    <article class="post_list">
+        <a href="{{ post.url | url }}" class="post_link">{{ post.data.title }}</a>
+        <small class="post_date">
+          <time datetime="{{ post.date | machineDate }}">
+            {{ post.date | readableDate }}
+          </time>
+        </small>
+    </article>
+  {% endfor %}
+</section>
