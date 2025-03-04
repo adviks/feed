@@ -1,23 +1,25 @@
+
 <section>
   <h3>Related posts</h3>
-  {% assign currentTags = post.data.tags %}
-  {% assign relatedPosts = "" | split: "" %}
+  {% set currentTags = post.data.tags %}
+  {% set relatedPosts = [] %}
+  {% set maxPosts = 3 %}
+  {% set postCount = 0 %}
 
   {% for post in postslist %}
-    {% if post.url != url and post.data.tags %}
+    {% if post.url != url and post.data.tags and postCount < maxPosts %}
       {% for tag in post.data.tags %}
-        {% if currentTags contains tag %}
-          {% assign relatedPosts = relatedPosts | push: post %}
-          {% break %}
+        {% if currentTags.includes(tag) and postCount < maxPosts %}
+          {% set relatedPosts = (relatedPosts.push(post), relatedPosts) %}
+          {% set postCount = postCount + 1 %}
+          {% set outer_loop = loop %}
+          {% if outer_loop.break %}{% endif %}
         {% endif %}
       {% endfor %}
     {% endif %}
-    {% if relatedPosts.size >= 3 %}
-      {% break %}
-    {% endif %}
   {% endfor %}
 
-  {% for post in relatedPosts limit:3 %}
+  {% for post in relatedPosts | slice(0, 3) %}
     <article class="post_list">
         <a href="{{ post.url | url }}" class="post_link">{{ post.data.title }}</a>
         <small class="post_date">
