@@ -1,0 +1,134 @@
+<!-- Floating Subscription Modal (Desktop Only) -->
+<div id="floating-sub" class="floating-sub">
+        <button class="close-btn" id="close-floating-sub">✖</button>
+
+    <div class="floating-content">
+        <p class="sub-text">Don't miss out! Subscribe to my newsletter</p>
+        <form id="floating-signup-form" method="post" action="https://app.convertkit.com/forms/3277206/subscriptions">
+            <input class="subEmail" type="email" name="email_address" required placeholder="your@email.com">
+            <button type="submit" class="submit-Button">Subscribe</button>
+        </form>
+        <small style="margin-top:5px">I respect privacy. Unsubscribe anytime.</small>
+
+    </div>
+</div>
+
+<style>
+
+.floating-sub .submit-Button {
+  background: var(--button-background);
+  border: none;
+  padding: 7px 10px;
+  color: var(--button-text-color);
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 1em;
+  font-family: Inter, sans-serif;
+}
+.floating-sub .submit-Button:hover {
+  /* color: #fff; */
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 0 5px rgba(229, 79, 45, 0.5); /* Optional: Soft glow effect */
+  box-sizing: border-box;
+}
+ .floating-sub {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 280px;
+    background: var(--modal-bg);
+    color: var(--text-color);
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 1000;
+    padding: 15px;
+}
+
+.floating-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.floating-sub.sub-text {
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.floating-sub .subEmail {
+    max-width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: none;
+}
+
+
+
+ .close-btn {
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    box-shadow: none; 
+    border:none;
+}
+ .close-btn:hover{
+  box-shadow: none; 
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const floatingSub = document.getElementById("floating-sub");
+    const floatingForm = document.getElementById("floating-signup-form");
+    const closeButton = document.getElementById("close-floating-sub"); // Get the button
+
+    // Show modal when user scrolls past 50% of the page
+    function checkScroll() {
+        if (window.innerWidth > 768) { // Desktop only
+            const scrollPos = window.scrollY;
+            const pageHeight = document.body.scrollHeight;
+            const triggerPoint = pageHeight * 0.5;
+
+            if (scrollPos > triggerPoint && !sessionStorage.getItem("subscribed")) {
+                floatingSub.style.display = "block";
+            }
+        }
+    }
+
+    // Close modal & prevent it from showing again
+    function closeFloatingSub() {
+        floatingSub.style.display = "none";
+        sessionStorage.setItem("subscribed", "true"); // Prevent reappearing
+    }
+
+    closeButton.addEventListener("click", closeFloatingSub); // Add event listener to close button
+
+    // Submit form using fetch
+    floatingForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const formData = new FormData(floatingForm);
+
+        fetch(floatingForm.getAttribute("action"), {
+            method: "POST",
+            body: formData,
+            headers: { "Accept": "application/json" }
+        })
+        .then(response => {
+            floatingSub.innerHTML = "<p style='text-align:center;'>🎉 You’re subscribed!</p>";
+            sessionStorage.setItem("subscribed", "true");
+            setTimeout(() => floatingSub.style.display = "none", 3000);
+        })
+        .catch(error => console.error(error));
+    });
+
+    // Listen for scroll event
+    window.addEventListener("scroll", checkScroll);
+    window.addEventListener("resize", checkScroll);
+});
+
+</script>
