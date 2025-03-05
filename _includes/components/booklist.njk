@@ -1,18 +1,58 @@
-<section>
-	{% for book in booklist | reverse %}
-		<article{% if book.url == url %} data-current="current item"{% endif %} class="post_list">
-				<a href="{{ book.url | url }}" class="post_link">
-					{% if book.data.title %}
-						{{ book.data.title }}
-					{% else %}
-						Untitled
-					{% endif %}
-				</a>
-				<p class="no_margin ">
-					<time class="grey post_list_date" datetime="{{ book.date | machineDate }}">
-						{{ book.date | readableDate }}
-					</time>
-				</p>
-		</article>
-	{% endfor %}
+<section class="book_grid">
+    {% for book in booklist | reverse %}
+        <article class="book_item">
+            <a href="{{ book.url | url }}" class="book_link">
+                {% if book.data.thumbnail %}
+                    <img src="{{ book.data.thumbnail | url }}" alt="{{ book.data.title }}" class="book_thumbnail">
+                {% endif %}
+                <div class="book_title">
+                    {% if book.data.title %}
+                        {{ book.data.title }}
+                    {% else %}
+                        Untitled
+                    {% endif %}
+                </div>
+            </a>
+        </article>
+    {% endfor %}
 </section>
+<style>
+
+.book_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    padding: 20px 0;
+}
+
+.book_item {
+    text-align: center;
+}
+
+.book_link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.book_thumbnail {
+    width: 100%;
+    height: 220px; /* Fixed height for uniformity */
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+}
+
+.book_thumbnail:hover {
+    transform: scale(1.05);
+}
+
+.book_title {
+    margin-top: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+</style>

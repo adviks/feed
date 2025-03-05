@@ -78,7 +78,7 @@ a {
 }
 blockquote {
   font-style: italic;
-  color: #bbb;
+  color: var(--small-color);
   border-left: 4px solid var(--link-color);
   padding-left: 16px;
   margin: 20px 0;
@@ -93,7 +93,7 @@ blockquote cite {
   display: block;
   margin-top: 8px;
   font-size: 0.9em;
-  color: #888;
+  color: var(--small-color);
 }
 
 /* Typography */
