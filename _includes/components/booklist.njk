@@ -128,15 +128,23 @@ const leftButton = document.querySelector(".scroll_btn.left");
 const rightButton = document.querySelector(".scroll_btn.right");
 
 function updateButtons() {
-    leftButton.disabled = bookContainer.scrollLeft <= 0;
-    rightButton.disabled = bookContainer.scrollLeft + bookContainer.clientWidth >= bookContainer.scrollWidth;
+    const scrollLeft = bookContainer.scrollLeft;
+    const maxScrollLeft = bookContainer.scrollWidth - bookContainer.clientWidth;
+
+    leftButton.style.display = scrollLeft > 0 ? "block" : "none";
+    rightButton.style.display = scrollLeft < maxScrollLeft ? "block" : "none";
 }
 
 function scrollBooks(direction) {
-    const scrollAmount = bookContainer.clientWidth * 0.8; 
+    const scrollAmount = bookContainer.clientWidth * 0.8;
     bookContainer.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
-    setTimeout(updateButtons, 300);
+
+    setTimeout(updateButtons, 300); // Allow time for smooth scrolling to take effect
 }
+
+// Detect resize & update button visibility dynamically
+window.addEventListener("resize", updateButtons);
+window.addEventListener("load", updateButtons);
 
 // Enable swipe gesture scrolling
 let startX = 0;
@@ -151,8 +159,5 @@ bookContainer.addEventListener("touchmove", (e) => {
     startX = moveX;
     updateButtons();
 });
-
-// Check button state on load
-updateButtons();
 
 </script>
