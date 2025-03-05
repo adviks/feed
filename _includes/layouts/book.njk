@@ -3,16 +3,16 @@ layout: layouts/base.njk
 section: post
 ---
 <article>
-
-    <p class="title">{{ title }}</p>
+<br>
+    <p class="book-title">{{ title }}</p>
    <small>   <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time> ✸ {{ content | readingTime }} read</small>
     <br>
     <br>
     <img src="{{ thumbnail }}" alt="{{ title }}" class="book_cover">
     <p class="book_meta">
-        <strong>Author:</strong> {{ book.data.author }} <br>
-        <strong>Genre:</strong> {{ book.data.genre }} <br>
-        <strong>Rating:</strong> ⭐ {{ book.data.rating }}/5
+        <strong>Author:</strong> {{ author }} <br>
+        <strong>Genre:</strong> {{ genre }} <br>
+        <strong>Rating:</strong> ⭐ {{ rating }}/5
     </p>
     <div class="content">
         {{ content | safe }}

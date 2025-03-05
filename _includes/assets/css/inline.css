@@ -105,7 +105,7 @@ blockquote cite {
 /* Typography */
 .title {
   /* font-family: "Newsreader", "Instrument Serif",serif; */
-  font-size:4em;
+  font-size:3em;
   line-height: 1.1;
   font-weight: 500;
   letter-spacing: -4px;
@@ -321,10 +321,16 @@ input:focus, textarea:focus, select:focus, button:focus {
 
 /* thumbnail/featured images */
 
-
+.book-title{
+  font-family: "Instrument Serif", "STIX Two Text", "Newsreader",serif;
+  font-size:3em;
+  line-height: 1.1;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 0;
+}
 .book_cover {
-  width: 280px;
-  height: auto;
+  height: 280px;
   border-radius: 12px;
   /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); */
   transition: transform 0.2s ease-in-out;
@@ -343,14 +349,10 @@ input:focus, textarea:focus, select:focus, button:focus {
 }
 .book_meta {
   background-color: var(--bg-box);
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 4px 8px;
+  border-radius: 5px;
   border: 1px solid var(--border-color);
   /* box-shadow: 0 4px 8px var(--shadow-color); */
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
   font-size: 0.9rem;
-  line-height: 1.4;
   color: var(--text-color);
 }
