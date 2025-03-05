@@ -10,4 +10,4 @@ year: 1748
 genre: philosophy
 rating: 3
 ---
-Perhaps one of the most revolutionary works of philosophy ever presented, The Phenomenology of Spirit is Hegel's 1807 work that is in numerous ways extraordinary. It begins with a Preface,
+Perhaps one of the most revolutionary works of philosophy ever presented, The Phenomenology of Spirit is Hegel's 1807 work that is in numerous ways extraordinary. It begins with a Preface
