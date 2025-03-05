@@ -6,7 +6,8 @@
 
 /* Root variables */
 :root {
-  --background-color: #f5f5dc;
+  --background-color: #FAF9F6;  
+  /* --background-color: ##F2F0EF; */
   --text-color: #333;
   --link-color: #e54f2d; /* New accent color */
   --hr-gradient: linear-gradient(to right, #e0e0e0, #c0c0c0, #e0e0e0);
@@ -83,6 +84,7 @@ a {
 .content {
   font-family: "Newsreader","STIX Two Text",  serif;
   font-size: 1.1rem;
+  line-height: 1.6;
 }
 
 .serif {
@@ -233,6 +235,7 @@ small {
 .post_link {
   color: var(--text-color);
   font-size: 1.1em;
+  font-weight: 500;
 }
 
 /* Sign-up form */
