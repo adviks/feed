@@ -68,6 +68,33 @@ a {
   border-bottom: 1px solid var(--link-color);
 }
 
+.content img{
+  max-width: 100%;
+  max-height: 320px;
+}
+.content h1,h2,h3{
+  font-family: "Instrument Sans", "Inter", "Familjen Grotesk", sans-serif;
+  font-weight: 500;
+}
+blockquote {
+  font-style: italic;
+  color: #bbb;
+  border-left: 4px solid var(--link-color);
+  padding-left: 16px;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+blockquote cite {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.9em;
+  color: #888;
+}
 
 /* Typography */
 .title {
