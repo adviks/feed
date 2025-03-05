@@ -1,0 +1,39 @@
+---
+layout: layouts/base.njk
+section: post
+---
+<article>
+
+    <h1 class="title">{{ title }}</h1>
+    <small>   <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time> ✸ {{ content | readingTime }} read</small>
+    <br>
+    <br>
+
+    <img src="{{ thumbnail }}" alt="{{ title }}" class="book_cover">
+    
+    
+    <p class="book_meta">
+        <strong>Author:</strong> {{ book.data.author }} <br>
+        <strong>Genre:</strong> {{ book.data.genre }} <br>
+        <strong>Rating:</strong> ⭐ {{ book.data.rating }}/5
+    </p>
+    <div class="content">
+        {{ content | safe }}
+    </div>
+    {% include "components/like.njk" %}
+</article>
+<br>
+<hr>
+<br>
+ <p>Subscribe to my newsletter for a monthly round-up of new blog posts and projects I’m working on! </p>
+{% include "components/sub.njk" %}
+<br>
+<br>
+<hr>
+
+{% include "components/related.njk" %}
+<br>
+<nav>
+  <a href="{{ '/' | url }}" class="back_link">← back</a>
+</nav>
+

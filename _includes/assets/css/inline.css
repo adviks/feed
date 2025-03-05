@@ -19,6 +19,9 @@
   --small-color: #999;
   --footer-border-color: #ddd;
   --email-color: #666;
+  --bg-box: rgba(0, 0, 0, 0.05);
+  --border-color: rgba(0, 0, 0, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Dark mode variables */
@@ -35,6 +38,9 @@
   --small-color: #6e6e76;
   --footer-border-color: #2a2a2a;
   --email-color: #6e6e76;
+  --bg-box: rgba(255, 255, 255, 0.05);
+  --border-color: rgba(229, 79, 45, 0.2);
+  --shadow-color: rgba(229, 79, 45, 0.1);
 }
 
 /* Base styles */
@@ -313,3 +319,38 @@ input:focus, textarea:focus, select:focus, button:focus {
   box-shadow: 0 0 5px rgba(229, 79, 45, 0.5); /* Optional: Soft glow effect */
 }
 
+/* thumbnail/featured images */
+
+
+.book_cover {
+  width: 280px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.book_cover:hover {
+  transform: scale(1.03);
+}
+
+.book_content {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+  text-align: justify;
+}
+.book_meta {
+  background-color: var(--bg-box);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 8px var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--text-color);
+}
