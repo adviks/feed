@@ -1,45 +1,47 @@
-<section class="book_grid">
-    {% for book in booklist | reverse %}
-        <article class="book_item">
+<section class="book_section">
+    <button class="scroll_btn left" onclick="scrollBooks(-1)">&#8592;</button> <!-- Left Arrow -->
+    
+    <div class="book_grid" id="bookContainer">
+        {% for book in booklist | reverse %}
+        <div class="book_item">
             <a href="{{ book.url | url }}" class="book_link">
-                {% if book.data.thumbnail %}
-                    <img src="{{ book.data.thumbnail | url }}" alt="{{ book.data.title }}" class="book_thumbnail">
-                {% endif %}
-                <div class="book_title">
-                    {% if book.data.title %}
-                        {{ book.data.title }}
-                    {% else %}
-                        Untitled
-                    {% endif %}
-                </div>
+                <img src="{{ book.data.thumbnail }}" alt="{{ book.data.title }}" class="book_thumbnail">
+                <p class="book_title">{{ book.data.title }}</p>
             </a>
-        </article>
-    {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <button class="scroll_btn right" onclick="scrollBooks(1)">&#8594;</button> <!-- Right Arrow -->
 </section>
+
 <style>
+
+.book_section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
 
 .book_grid {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    overflow-x: hidden; /* Hide native scroll */
+    scroll-behavior: smooth;
     gap: 16px;
     padding: 20px 0;
+    white-space: nowrap;
+    width: 640px; /* Adjust width to fit 4 books */
 }
 
 .book_item {
-    width: 150px; /* Fixed width for uniform size */
+    flex: 0 0 100px; /* Fixed book size */
     text-align: center;
 }
 
-.book_link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
 .book_thumbnail {
-    width: 150px; /* Fixed size */
-    height: 220px;
+    width: 130px;
+    height: 200px;
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
@@ -57,5 +59,39 @@
     text-align: center;
 }
 
+/* Scroll Buttons */
+.scroll_btn {
+    background: #222;
+    color: white;
+    border: var(--text-color);
+    padding: 5px 7px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.2s ease-in-out;
+}
+
+.scroll_btn:hover {
+    background: #444;
+}
+
+/* Hide button when not needed */
+.scroll_btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
 
 </style>
+
+<script>
+function scrollBooks(direction) {
+    const container = document.getElementById("bookContainer");
+    const scrollAmount = 166 * 4; // Scroll by width of 4 books
+
+    container.scrollBy({
+        left: direction * scrollAmount,
+        behavior: "smooth"
+    });
+}
+
+</script>
