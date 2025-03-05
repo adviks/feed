@@ -19,7 +19,7 @@ if(localStorage.getItem("darkMode") === "enabled"){
 }
 
 // Check system preference
-// if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-//     document.body.classList.add("dark-mode");
-//     btn.classList.add("ph-toggle-right");
-// }
+if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.body.classList.add("dark-mode");
+    btn.classList.add("ph-toggle-right");
+}
