@@ -5,7 +5,7 @@ metaDescription: Perhaps one of the most revolutionary works of philosophy ever 
 date: 2025-03-05T13:33:00
 tags:
   - book
-author: Hegel
+bauthor: Hegel
 year: 1748
 genre: philosophy
 rating: 3

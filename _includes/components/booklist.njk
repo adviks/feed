@@ -17,47 +17,40 @@
 
 <style>
 .book_section {
-    display: flex;
-    align-items: center;
-    gap: 10px;
     position: relative;
-    max-width: 100%;
+    width: 100%;
     overflow: hidden;
 }
 
-/* Book Grid */
 .book_grid {
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
-    gap: 10px;
+    scroll-snap-type: x mandatory;
+    gap: 5px;
     padding: 10px 0;
     white-space: nowrap;
+    scrollbar-width: none; /* Hide scrollbar */
+    -ms-overflow-style: none;
     width: 100%;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none; /* Hide scrollbar for Firefox */
 }
 
-/* Hide scrollbar for Chrome, Safari */
 .book_grid::-webkit-scrollbar {
     display: none;
 }
 
-/* Book Item */
 .book_item {
-    flex: 0 0 auto;
-    width: 130px; /* Default size */
+    flex: 0 0 120px;
     text-align: center;
     scroll-snap-align: start;
 }
 
-/* Book Thumbnail */
 .book_thumbnail {
-    width: 130px;
-    height: 200px;
+    width: 120px;
+    height: 180px;
     object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s ease-in-out;
 }
 
@@ -65,32 +58,24 @@
     transform: scale(1.05);
 }
 
-/* Book Title */
 .book_title {
-    margin-top: 8px;
-    font-size: 1rem;
+    margin-top: 5px;
+    font-size: 0.85rem;
     font-weight: 600;
     text-align: center;
     max-width: 100%;
-    white-space: normal; /* Allow multi-line text */
+    white-space: normal;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    line-height: 1.2; /* Improve readability */
-}
-  
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .book_title {
-        font-size: 0.9rem;
-        line-height: 1.1;
-        padding: 0 5px; /* Add padding to prevent overlap */
-    }
+    line-height: 1.2;
 }
 
-
-/* Scroll Buttons */
+/* Overlay Scroll Buttons */
 .scroll_btn {
-    background: #222;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
     color: white;
     border: none;
     padding: 10px 12px;
@@ -102,10 +87,18 @@
 }
 
 .scroll_btn:hover {
-    background: #444;
+    background: rgba(0, 0, 0, 0.8);
 }
 
-/* Hide button when not needed */
+.scroll_btn.left {
+    left: 5px;
+}
+
+.scroll_btn.right {
+    right: 5px;
+}
+
+/* Hide buttons when not needed */
 .scroll_btn:disabled {
     opacity: 0.3;
     cursor: default;
@@ -114,64 +107,52 @@
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .book_item {
-        width: 110px;
+        flex: 0 0 100px;
     }
+    
     .book_thumbnail {
-        width: 110px;
-        height: 170px;
+        width: 100px;
+        height: 160px;
     }
+
     .book_title {
-        font-size: 0.9rem;
-    }
-    .scroll_btn {
-        padding: 8px 10px;
-        font-size: 16px;
+        font-size: 0.8rem;
     }
 }
+
 </style>
 
 <script>
-const container = document.getElementById("bookContainer");
+const bookContainer = document.getElementById("bookContainer");
+const leftButton = document.querySelector(".scroll_btn.left");
+const rightButton = document.querySelector(".scroll_btn.right");
 
-// Scroll Function
-function scrollBooks(direction) {
-    const scrollAmount = container.clientWidth * 0.8; // Scroll by 80% of container width
-    container.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
+function updateButtons() {
+    leftButton.disabled = bookContainer.scrollLeft <= 0;
+    rightButton.disabled = bookContainer.scrollLeft + bookContainer.clientWidth >= bookContainer.scrollWidth;
 }
 
-// Touch & Swipe Support
-let isDragging = false, startX, scrollLeft;
+function scrollBooks(direction) {
+    const scrollAmount = bookContainer.clientWidth * 0.8; 
+    bookContainer.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
+    setTimeout(updateButtons, 300);
+}
 
-container.addEventListener("mousedown", (e) => {
-    isDragging = true;
-    startX = e.pageX - container.offsetLeft;
-    scrollLeft = container.scrollLeft;
-    container.style.cursor = "grabbing";
+// Enable swipe gesture scrolling
+let startX = 0;
+bookContainer.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
 });
 
-container.addEventListener("mouseleave", () => isDragging = false);
-container.addEventListener("mouseup", () => {
-    isDragging = false;
-    container.style.cursor = "grab";
+bookContainer.addEventListener("touchmove", (e) => {
+    let moveX = e.touches[0].clientX;
+    let diff = startX - moveX;
+    bookContainer.scrollLeft += diff * 0.5; // Adjust speed for smoothness
+    startX = moveX;
+    updateButtons();
 });
 
-container.addEventListener("mousemove", (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - container.offsetLeft;
-    const walk = (x - startX) * 2; // Adjust speed
-    container.scrollLeft = scrollLeft - walk;
-});
+// Check button state on load
+updateButtons();
 
-// Touch Support for Mobile
-container.addEventListener("touchstart", (e) => {
-    startX = e.touches[0].pageX;
-    scrollLeft = container.scrollLeft;
-});
-
-container.addEventListener("touchmove", (e) => {
-    const x = e.touches[0].pageX;
-    const move = x - startX;
-    container.scrollLeft = scrollLeft - move;
-});
 </script>

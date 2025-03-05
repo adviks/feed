@@ -57,7 +57,7 @@ collections:
       - { label: "Description", name: "metaDescription", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Tags", name: "tags", widget: "list", default: ["book"] }
-      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Book Author", name: "bauthor", widget: "string" }
       - { label: "Publication Year", name: "year", widget: "number" }
       - { label: "Genre", name: "genre", widget: "string" }
       - { label: "Rating", name: "rating", widget: "number", min: 0.0, max: 5.0, step: 0.5 }
