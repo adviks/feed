@@ -4,14 +4,11 @@ section: post
 ---
 <article>
 
-    <h1 class="title">{{ title }}</h1>
-    <small>   <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time> ✸ {{ content | readingTime }} read</small>
+    <p class="title">{{ title }}</p>
+   <small>   <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time> ✸ {{ content | readingTime }} read</small>
     <br>
     <br>
-
     <img src="{{ thumbnail }}" alt="{{ title }}" class="book_cover">
-    
-    
     <p class="book_meta">
         <strong>Author:</strong> {{ book.data.author }} <br>
         <strong>Genre:</strong> {{ book.data.genre }} <br>
