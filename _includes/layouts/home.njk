@@ -4,17 +4,19 @@ section: home
 ---
 
 {{ layoutContent | safe }}
-<p style="margin-top:0;" class="serif"><em>My mind's bursting with words, but my fingers are on strike!</em></p> 
-<p class="serif" style="margin-bottom:0;">✹ Writing ✹</p>
+<p style="margin-top:0;font-size:16px;" class="serif"><em>My mind's bursting with words, but my fingers are on strike!</em></p> 
+
+<hr>
+<p class="serif" style="margin-bottom:0;">✸ Writing ✸</p>
 {% set postslist = collections.post %}
 {% include "components/postslist.njk" %}
 
-<!--
+
 <p class="serif">✸ Books ✸</p>
 {% set booklist = collections.book %}
 {% include "components/booklist.njk" %}
--->
 
+<hr>
 <p class="serif" style="margin-bottom: 0;">✸ Newsletter ✸</p>
 <small>A not-so-regular newsletter.</small>
 <br>
