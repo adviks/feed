@@ -1,52 +1,61 @@
 <section>
-    {% for post in postslist | reverse %}
-        <article{% if post.url == url %} data-current="current item"{% endif %} class="post_list">
-            <div class="post_link" href="{{ post.url | url }}">
-                <div class="post_content">
-                    <h2>{{ post.data.title }}</h2>
-                    <p>{{ post.data.metaDescription }}</p>
+    {% for post in postslist | reverse | slice(0,3) %}
+        <div{% if post.url == url %} data-current="current item"{% endif %} class="post_list">
+            <a class="post" ">
+                <div class="text_content">
+                    <h2 href="{{ post.url | url }}>{{ post.data.title }}</h2>
+                    <p style="margin-top:0">
+                            {{ post.templateContent | striptags | truncateWords(25) }}
+                    </p>
                 </div>
-                <img class="post_thumbnail" src="{{ post.data.thumbnail ? post.data.thumbnail : 'https://placehold.co/600x400' }}" alt="{{ post.data.title }}">
-            </div>
-        </article>
+                <div class="thumbnail">
+                    <img class="post_thumbnail" src="{{ post.data.thumbnail | default('https://placehold.co/600x400') }}" alt="{{ post.data.title }}">
+                </div>
+            </a>
+        </div>
     {% endfor %}
 </section>
 
-<style>
-.post_list {
-    padding: 10px; /* Optional: Add some padding */
-    border: 1px solid #ccc; /* Optional: Add a border for visibility */
-}
 
-.post_link {
+
+
+
+<style>
+
+.post {
     display: flex;
-    justify-content: space-between; /* Aligns items to the ends */
-    align-items: center; /* Vertically centers items */
-    text-decoration: none; /* Remove underline from links */
+    justify-content: space-between;  
+    align-items: center;
+    text-decoration: none; 
+}
+.post_list{
+margin-bottom:10px;
 }
 
 .post_thumbnail {
-    width: 100px; /* Set a fixed width for the thumbnail */
-    height: auto; 
+    width: 120px;
+  height: 67px; 
     object-fit: cover;
     border-radius: 5px;
 }
 
-.post_content {
-    flex: 1; /* Allows the content to take available space */
-    margin-right: 10px; /* Optional: Add some space between content and thumbnail */
+.text_content {
+    flex: 1;
+    margin-right: 10px; 
+    color: var(--text-color);
 }
 
-.post_content h2 {
+.post h2 {
     font-size: 18px;
     margin-bottom: 5px;
     border-bottom: 2px solid #d9534f;
     display: inline-block;
     font-family: "Instrument Serif";
-    font-weight: normal; /* Remove quotes around normal */
+    font-weight: normal;
+    color: var(--text-color);
 }
 
 .post_content p {
-    font-size: 12px;
+    font-size: 14px;
 }
 </style>

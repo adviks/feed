@@ -13,6 +13,17 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.setDataDeepMerge(true);
 
+  // Add a 'slice' filter to Nunjucks
+  eleventyConfig.addNunjucksFilter("slice", function(arr, start, end) {
+    return arr.slice(start, end);
+  });
+  // Custom Nunjucks filter to truncate content by words
+  eleventyConfig.addNunjucksFilter("truncateWords", function(str, numWords) {
+    if (!str) return '';
+    const wordsArray = str.split(/\s+/); // Split by any whitespace character
+    const truncated = wordsArray.slice(0, numWords).join(' ');
+    return wordsArray.length > numWords ? `${truncated}...` : truncated;
+  });
   // Date formatting (human readable)
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     return DateTime.fromJSDate(new Date(dateObj)).toFormat("dd LLL yyyy");
