@@ -11,23 +11,5 @@
   </ul>
   <script>
     document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-      (function() {
-        const endpoint = "https://views.asav.workers.dev/"; 
-
-        async function trackPageView() {
-          try {
-            const response = await fetch(endpoint + window.location.pathname, { method: "GET" });
-            const data = await response.json();
-            console.log(`Page Views: ${data.views}`);
-          } catch (error) {
-            console.error("Analytics tracking failed:", error);
-          }
-        }
-
-        // Delay tracking slightly to avoid blocking rendering
-        setTimeout(trackPageView, 1000);
-      })();
-
 </script>
 </footer>
