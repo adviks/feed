@@ -1,6 +1,6 @@
 <section>
-    {% for post in postslist | reverse | slice(0,3) %}
-        <div{% if post.url == url %} data-current="current item"{% endif %} class="post_list">
+    {% for post in postslist | reverse %}
+        <div {% if post.url == url %} data-current="current item"{% endif %} class="post_list">
             <a class="post" href="{{ post.url | url }}">
                 <div class="text_content">
                     <h2>{{ post.data.title }}</h2>

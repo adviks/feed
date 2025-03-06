@@ -1,12 +1,12 @@
 /* Imports */
-@import url('https://rsms.me/inter/inter.css');
-@import url('https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap');
+@import url("https://rsms.me/inter/inter.css");
+@import url("https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap");
 
 /* Root variables */
 :root {
-  --background-color: #FAF9F6;  
+  --background-color: #faf9f6;
   /* --background-color: ##F2F0EF; */
   --text-color: #333;
   --link-color: #e54f2d; /* New accent color */
@@ -53,18 +53,23 @@ body {
   font-size: 16px;
   padding: 0 1em;
   max-height: 100vh;
-  font-family: "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto",
-    "Helvetica Neue", "Arial", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
 }
-
-h1, h2, h3 {
-  line-height: 1.2;
-  
+.hero_title{
+  font-family: "Instrument Serif", 'Times New Roman', Times, serif;
+  font-weight: normal;
+  font-size: calc(40px + (50 - 40) * ((100vw - 300px) / (1600 - 300)));
 }
-.avatar{
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+.avatar {
   max-height: 48px;
   border-radius: 50%;
 }
@@ -78,11 +83,13 @@ a {
   border-bottom: 1px solid var(--link-color);
 }
 
-.content img{
+.content img {
   max-width: 100%;
   max-height: 320px;
 }
-.content h1,h2,h3{
+.content h1,
+h2,
+h3 {
   font-family: "Instrument Sans", "Inter", "Familjen Grotesk", sans-serif;
   font-weight: 500;
 }
@@ -109,7 +116,7 @@ blockquote cite {
 /* Typography */
 .title {
   /* font-family: "Newsreader", "Instrument Serif",serif; */
-  font-size:3em;
+  font-size: 3em;
   line-height: 1.1;
   font-weight: 500;
   letter-spacing: -4px;
@@ -119,14 +126,14 @@ blockquote cite {
 }
 
 .content {
-  font-family: "Newsreader","STIX Two Text",  serif;
+  font-family: "Newsreader", "STIX Two Text", serif;
   font-size: 1.1rem;
   line-height: 1.6;
 }
 
 .serif {
-  font-family: "Instrument Serif", "STIX Two Text", "Newsreader",serif;
-  font-size:1.2em;
+  font-family: "Instrument Serif", "STIX Two Text", "Newsreader", serif;
+  font-size: 1.2em;
 }
 
 .site-name {
@@ -171,7 +178,6 @@ button:hover {
   box-sizing: border-box;
 }
 
-
 /* Horizontal rule */
 hr {
   border: none;
@@ -180,13 +186,6 @@ hr {
   position: relative;
   margin: 1rem 0;
 }
-
-
-
-
-
-
-
 
 /* Navigation */
 nav {
@@ -257,7 +256,8 @@ small {
   color: var(--email-color);
 }
 
-.ph-fill, .ph-duotone {
+.ph-fill,
+.ph-duotone {
   font-size: 24px;
   color: var(--link-color);
 }
@@ -303,31 +303,36 @@ small {
 }
 
 ::selection {
-  background: #e64b2b; 
+  background: #e64b2b;
   color: white;
 }
 ::-moz-selection {
   background: #e64b2b; /* Gecko Browsers */
   color: white;
-
 }
 
-input, textarea, select, button {
+input,
+textarea,
+select,
+button {
   outline: none;
   border: 2px solid transparent; /* Keeps space reserved */
   padding: 8px; /* Adjust as needed */
 }
 
-input:focus, textarea:focus, select:focus, button:focus {
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
   border-color: #e54f2d; /* Changes color instead of adding new border */
   box-shadow: 0 0 5px rgba(229, 79, 45, 0.5); /* Optional: Soft glow effect */
 }
 
 /* thumbnail/featured images */
 
-.book-title{
-  font-family: "Instrument Serif", "STIX Two Text", "Newsreader",serif;
-  font-size:3em;
+.book-title {
+  font-family: "Instrument Serif", "STIX Two Text", "Newsreader", serif;
+  font-size: 3em;
   line-height: 1.1;
   font-weight: 500;
   margin-top: 0;
@@ -354,13 +359,13 @@ input:focus, textarea:focus, select:focus, button:focus {
 /* ✅ Make it responsive for mobile */
 @media (max-width: 768px) {
   .book-container {
-      flex-direction: column; /* Stack on mobile */
-      align-items: flex-start;
+    flex-direction: column; /* Stack on mobile */
+    align-items: flex-start;
   }
 
   .book-cover {
-      width: 100%; /* Make image full-width */
-      max-width: 250px; /* Limit max size */
+    width: 100%; /* Make image full-width */
+    max-width: 250px; /* Limit max size */
   }
 }
 

@@ -3,15 +3,18 @@ layout: layouts/base.njk
 section: home
 ---
 
-{{ layoutContent | safe }}
-<p style="margin-top:0;font-size:16px;" class="serif"><em>My mind's bursting with words, but my fingers are on strike!</em></p> 
+{# {{ layoutContent | safe }}
+<p style="margin-top:0;font-size:16px;" class="serif"><em>My mind's bursting with words, but my fingers are on strike!</em></p>  #}
+{% include "components/heroSub.njk" %}
+{% include "components/sub.njk" %}
+
 
 <hr>
 <p class="serif" style="margin-bottom:0;">✸ Writing ✸</p>
 <small>Personal essays+ opinions</small>
-{% set postslist = collections.post%}
+{% set postslist = collections.post | slice(0,3)%}
 {% include "components/postslist.njk" %}
-
+<a href="/blog" class="back_link">See all →</a>
 <hr>
 <p class="serif" style="margin-bottom:0;">✸ Books ✸</p>
 <small>Book reviews + notes.</small>
@@ -19,11 +22,10 @@ section: home
 {% include "components/booklist.njk" %}
 
 <hr>
-<p class="serif" style="margin-bottom: 0;">✸ Newsletter ✸</p>
+{# <p class="serif" style="margin-bottom: 0;">✸ Newsletter ✸</p>
 <small>A not-so-regular newsletter.</small>
 <br>
-{% include "components/sub.njk" %}
-<br>
+<br> #}
 
 <small>{% include "components/spot.njk" %}</small>
 
