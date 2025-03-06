@@ -60,5 +60,5 @@ collections:
       - { label: "Book Author", name: "bauthor", widget: "string" }
       - { label: "Publication Year", name: "year", widget: "number" }
       - { label: "Genre", name: "genre", widget: "string" }
-      - { label: "Rating", name: "rating", widget: "number", value_type:"float", min: 0.0, max: 5.0, step: 0.5 }
+      - { label: "Rating", name: "rating", widget: "string", pattern: ['^[0-5](\.[05])?$', "Please enter a rating between 0 and 5 in 0.5 increments (e.g., 3.5)."] }
       - { label: "Body", name: "body", widget: "markdown" }

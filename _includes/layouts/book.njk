@@ -14,7 +14,8 @@ section: post
     <!-- Container for Book Thumbnail & Meta -->
     <div class="book-container">
         <img src="{{ thumbnail }}" alt="{{ title }}" class="book-cover">
-        
+        {% set rating = rating | float %}
+
         <div class="book-meta">
             <p><strong>Author:</strong> {{ bauthor }}</p>
             <p><strong>Genre:</strong> {{ genre }}</p>
