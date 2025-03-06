@@ -4,7 +4,3 @@
   "author": "Advik",
   "tags": ["wall"]
 }
-{
-  "layout": "layouts/wall-post.njk",
-  "permalink": "/wall/{{ title | slug }}/index.html"
-}
