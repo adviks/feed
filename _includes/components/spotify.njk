@@ -1,0 +1,67 @@
+{% set nowPlayingUrl = "https://spotify.asav.workers.dev/get-now-playing" %}
+{% set nowPlayingData = fetch(nowPlayingUrl) | safe %}
+
+{% if nowPlayingData.is_playing %}
+  <div class="now-playing">
+    <h2>Now Playing</h2>
+    <div class="track-info">
+      <img src="{{ nowPlayingData.item.album.images[0].url }}" alt="{{ nowPlayingData.item.name }} album cover" class="album-cover" />
+      <div class="track-details">
+        <h3>{{ nowPlayingData.item.name }}</h3>
+        <p>by <a href="{{ nowPlayingData.item.artists[0].external_urls.spotify }}">{{ nowPlayingData.item.artists[0].name }}</a> (feat. <a href="{{ nowPlayingData.item.artists[1].external_urls.spotify }}">{{ nowPlayingData.item.artists[1].name }}</a>)</p>
+        <p>Album: <a href="{{ nowPlayingData.item.album.external_urls.spotify }}">{{ nowPlayingData.item.album.name }}</a></p>
+        <p>Duration: {{ (nowPlayingData.item.duration_ms / 1000) | round(0) | formatDuration }}</p>
+        <p>Popularity: {{ nowPlayingData.item.popularity }}</p>
+        <a href="{{ nowPlayingData.item.external_urls.spotify }}" class="listen-now">Listen on Spotify</a>
+      </div>
+    </div>
+  </div>
+{% else %}
+  <div class="now-playing">
+    <h2>Not currently playing anything.</h2>
+  </div>
+{% endif %}
+
+
+<style>
+
+.now-playing {
+  border: 1px solid #1DB954;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #121212;
+  color: white;
+  margin: 20px 0;
+}
+
+.track-info {
+  display: flex;
+  align-items: center;
+}
+
+.album-cover {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  margin-right: 16px;
+}
+
+.track-details {
+  flex: 1;
+}
+
+.listen-now {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #1DB954;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.listen-now:hover {
+  background-color: #1aa34a;
+}
+
+</style>

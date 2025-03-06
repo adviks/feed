@@ -7,5 +7,6 @@ permalink: /books/index.html
 
 {{ layoutContent | safe }}
 
+{% include "components/spotify.njk" %}
 {% set booklist = collections.book %}
 {% include "components/allBooks.njk" %}
