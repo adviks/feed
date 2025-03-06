@@ -1,67 +1,182 @@
-{% set nowPlayingUrl = "https://spotify.asav.workers.dev/get-now-playing" %}
-{% set nowPlayingData = fetch(nowPlayingUrl) | safe %}
+<div class="track-info" id="track-info">
+  <!-- Track information will be populated here -->
+</div>
 
-{% if nowPlayingData.is_playing %}
-  <div class="now-playing">
-    <h2>Now Playing</h2>
-    <div class="track-info">
-      <img src="{{ nowPlayingData.item.album.images[0].url }}" alt="{{ nowPlayingData.item.name }} album cover" class="album-cover" />
-      <div class="track-details">
-        <h3>{{ nowPlayingData.item.name }}</h3>
-        <p>by <a href="{{ nowPlayingData.item.artists[0].external_urls.spotify }}">{{ nowPlayingData.item.artists[0].name }}</a> (feat. <a href="{{ nowPlayingData.item.artists[1].external_urls.spotify }}">{{ nowPlayingData.item.artists[1].name }}</a>)</p>
-        <p>Album: <a href="{{ nowPlayingData.item.album.external_urls.spotify }}">{{ nowPlayingData.item.album.name }}</a></p>
-        <p>Duration: {{ (nowPlayingData.item.duration_ms / 1000) | round(0) | formatDuration }}</p>
-        <p>Popularity: {{ nowPlayingData.item.popularity }}</p>
-        <a href="{{ nowPlayingData.item.external_urls.spotify }}" class="listen-now">Listen on Spotify</a>
-      </div>
-    </div>
-  </div>
-{% else %}
-  <div class="now-playing">
-    <h2>Not currently playing anything.</h2>
-  </div>
-{% endif %}
+<script>
+  async function fetchNowPlaying() {
+    try {
+      const response = await fetch("https://spotify.asav.workers.dev/get-now-playing");
+      const nowPlayingData = await response.json();
 
+      if (nowPlayingData.is_playing && nowPlayingData.item) {
+        const artists = nowPlayingData.item.artists.map(artist => 
+          `<a href="${artist.external_urls.spotify}" target="_blank">${artist.name}</a>`
+        ).join(', ');
+
+        const trackInfo = `
+          <div class="track-container">
+            <div class="album-wrapper">
+              <img src="${nowPlayingData.item.album.images[0].url}" alt="${nowPlayingData.item.name} album cover" class="album-cover" />
+              <div class="playing-animation">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+              </div>
+            </div>
+            <div class="track-details">
+              <div class="scrolling-text">
+                <span class="song-name">${nowPlayingData.item.name}</span>
+              </div>
+              <div class="artist-name">by ${artists}</div>
+            </div>
+          </div>
+        `;
+        document.getElementById('track-info').innerHTML = trackInfo;
+      } else {
+        document.getElementById('track-info').innerHTML = '<p>Nothing is currently playing.</p>';
+      }
+    } catch (error) {
+      console.error('Error fetching now playing data:', error);
+      document.getElementById('track-info').innerHTML = '<p>Error fetching data. Check the console for details.</p>';
+    }
+  }
+
+  fetchNowPlaying();
+</script>
 
 <style>
+  :root {
+    --background: #121212;
+    --text-primary: #fff;
+    --text-secondary: #b3b3b3;
+    --spotify-green: #1db954;
+    --modal-bg: rgba(255, 255, 255, 0.08);
+  }
 
-.now-playing {
-  border: 1px solid #1DB954;
-  border-radius: 8px;
-  padding: 16px;
-  background-color: #121212;
-  color: white;
-  margin: 20px 0;
-}
 
-.track-info {
-  display: flex;
-  align-items: center;
-}
+  /* Track Info Card */
+  .track-info {
+    width: 100%;
+    max-width: 400px;
+    background: var(--modal-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
 
-.album-cover {
-  width: 100px;
-  height: 100px;
-  border-radius: 8px;
-  margin-right: 16px;
-}
+  /* Track Container */
+  .track-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
 
-.track-details {
-  flex: 1;
-}
+  /* Album Cover Wrapper */
+  .album-wrapper {
+    position: relative;
+    width: 75px;
+    height: 75px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
 
-.listen-now {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 16px;
-  background-color: #1DB954;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-}
+  /* Album Cover */
+  .album-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
 
-.listen-now:hover {
-  background-color: #1aa34a;
-}
+  /* Playing Animation Overlay */
+  .playing-animation {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 3px;
+  }
 
+  .bar {
+    width: 3px;
+    height: 12px;
+    background-color: rgba(29, 185, 84, 0.8); /* Semi-transparent green */
+    border-radius: 2px;
+    animation: wave 1.2s infinite ease-in-out;
+  }
+
+  .bar:nth-child(2) { animation-delay: 0.2s; }
+  .bar:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes wave {
+    0%, 100% { height: 8px; }
+    50% { height: 18px; }
+  }
+
+  /* Track Details */
+  .track-details {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  /* Scrolling Text Effect */
+  .scrolling-text {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .scrolling-text span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 5s linear infinite;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+
+  /* Artist Name */
+  .artist-name {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+
+  /* RESPONSIVE DESIGN */
+  @media (max-width: 500px) {
+    .track-info {
+      max-width: 100%;
+    }
+
+    .track-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+    }
+
+    .album-wrapper {
+      width: 100px;
+      height: 100px;
+    }
+
+    .playing-animation {
+      bottom: 10px;
+    }
+
+    .track-details {
+      margin-left: 0;
+    }
+  }
 </style>
