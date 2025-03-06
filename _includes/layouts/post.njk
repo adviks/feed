@@ -8,6 +8,14 @@ section: post
   <p class="title">{{ title }}</p>
    <small>   <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time> ✸ {{ content | readingTime }} read</small>
   
+<br>
+<br>
+<figure>
+<img class="featured_image" src="{{ thumbnail | default('https://placehold.co/600x400') }}" alt="{{ title }}">
+<figcaption><small>{{ fCaption }}</small></figcaption>
+</figure>
+                    
+
 <div class="content">{{ layoutContent | safe }}</div>
 
 {% include "components/like.njk" %}

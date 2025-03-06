@@ -14,6 +14,7 @@
       <span id="song-text-clone"></span>
     </div>
   </div>
+    <!-- <span><img src="" id="albumCover" alt="{{nowPlayingData.item.name}} album cover" class="album-cover" /></span> -->
 </div>
 
 <script>
@@ -26,14 +27,15 @@
       const waveAnimation = document.getElementById("wave-animation");
       const idleDot = document.getElementById("idle-dot");
       const scrollingText = document.querySelector(".scrolling-text");
-      
+      const albumArt = document.getElementById("albumCover")
       if (nowPlayingData.is_playing && nowPlayingData.item) {
         const artists = nowPlayingData.item.artists.map(artist => artist.name).join(', ');
         const trackInfo = `${nowPlayingData.item.name} - ${artists}`;
+        // const albumArtURL = nowPlayingData.item.album.images[0].url 
         
         songText.innerText = trackInfo;
         songTextClone.innerText = trackInfo;
-
+        //albumArt.src = albumArtURL
         // Adjust animation speed dynamically based on text length
         const textWidth = scrollingText.scrollWidth;
         const containerWidth = document.querySelector(".scrolling-wrapper").offsetWidth;
@@ -63,6 +65,12 @@
 </script>
 
 <style>
+  .album-cover {
+  height: 36px; /* Set your desired height */
+  width: auto;   /* Maintain aspect ratio */
+  border-radius: 8px;
+  object-fit: cover;
+}
   .spotify-now-playing {
     display: flex;
     align-items: center;

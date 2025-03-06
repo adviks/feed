@@ -1,6 +1,7 @@
 ---
 title: Belief
 thumbnail: https://images.unsplash.com/photo-1627806951929-b12533350dc8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTg0MTF8MHwxfHNlYXJjaHwxOXx8YmVsaWVmfGVufDB8fHx8MTc0MTI2MDQxM3ww&ixlib=rb-4.0.3&q=80&w=1080
+fCaption: Credit/Unsplash
 metaDescription: Our beliefs shape our identity.
 date: 2022-05-21T05:41:00.000Z
 tags:
