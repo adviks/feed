@@ -1,9 +1,9 @@
 <section>
     {% for post in postslist | reverse | slice(0,3) %}
         <div{% if post.url == url %} data-current="current item"{% endif %} class="post_list">
-            <a class="post" ">
+            <a class="post" href="{{ post.url | url }}">
                 <div class="text_content">
-                    <h2 href="{{ post.url | url }}>{{ post.data.title }}</h2>
+                    <h2>{{ post.data.title }}</h2>
                     <p style="margin-top:0">
                             {{ post.templateContent | striptags | truncateWords(25) }}
                     </p>
