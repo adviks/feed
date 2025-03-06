@@ -361,3 +361,6 @@ input:focus, textarea:focus, select:focus, button:focus {
       max-width: 250px; /* Limit max size */
   }
 }
+#star-rating{
+  color: gold;
+}
