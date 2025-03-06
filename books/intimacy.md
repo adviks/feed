@@ -11,7 +11,7 @@ year: 1938
 genre: Philosophy
 rating: 3
 ---
-This is Sartre's masterly portrait of life seen from new and revealing angles, in which the human soul is stripped of all its civilized veneer, and layers of experience are peeled back with ferocious skill - to reveal the depths of the private oppressions, sensualities and neuroses of our time, and the overpowering evil to which modern man can descend.
+This is Sartre's masterly portrait of life seen from new and revealing angles, in which the human soul is stripped of all its civilized veneer, and layers of experience are peeled back with ferocious skill - to reveal the depths of the private oppessions, sensualities and neuroses of our time, and the overpowering evil to which modern man can descend.
 
 CONTENTS:
 Intimacy - The Wall - The Room - Erostratus - The Childhood of a Leader
