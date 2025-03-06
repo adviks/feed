@@ -1,12 +1,52 @@
 <section>
-	{% for post in postslist | reverse %}
-		<article{% if post.url == url %} data-current="current item"{% endif %} class="post_list">
-				<a href="{{ post.url | url }}" class="post_link">{{ post.data.title }}</a>
-				<small class="post_date">
-					<time datetime="{{ post.date | machineDate }}">
-						{{ post.date | readableDate }}
-					</time>
-				</small>
-		</article>
-	{% endfor %}
+    {% for post in postslist | reverse %}
+        <article{% if post.url == url %} data-current="current item"{% endif %} class="post_list">
+            <div class="post_link" href="{{ post.url | url }}">
+                <div class="post_content">
+                    <h2>{{ post.data.title }}</h2>
+                    <p>{{ post.data.metaDescription }}</p>
+                </div>
+                <img class="post_thumbnail" src="{{ post.data.thumbnail ? post.data.thumbnail : 'https://placehold.co/600x400' }}" alt="{{ post.data.title }}">
+            </div>
+        </article>
+    {% endfor %}
 </section>
+
+<style>
+.post_list {
+    padding: 10px; /* Optional: Add some padding */
+    border: 1px solid #ccc; /* Optional: Add a border for visibility */
+}
+
+.post_link {
+    display: flex;
+    justify-content: space-between; /* Aligns items to the ends */
+    align-items: center; /* Vertically centers items */
+    text-decoration: none; /* Remove underline from links */
+}
+
+.post_thumbnail {
+    width: 100px; /* Set a fixed width for the thumbnail */
+    height: auto; 
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.post_content {
+    flex: 1; /* Allows the content to take available space */
+    margin-right: 10px; /* Optional: Add some space between content and thumbnail */
+}
+
+.post_content h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    border-bottom: 2px solid #d9534f;
+    display: inline-block;
+    font-family: "Instrument Serif";
+    font-weight: normal; /* Remove quotes around normal */
+}
+
+.post_content p {
+    font-size: 12px;
+}
+</style>

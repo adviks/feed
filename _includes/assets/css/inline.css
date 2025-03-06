@@ -261,7 +261,7 @@ small {
 }
 
 /* Post list */
-.post_list {
+/* .post_list {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -271,7 +271,7 @@ small {
   color: var(--text-color);
   font-size: 1.1em;
   font-weight: 500;
-}
+} */
 
 /* Sign-up form */
 #signup-form {
