@@ -361,6 +361,27 @@ input:focus, textarea:focus, select:focus, button:focus {
       max-width: 250px; /* Limit max size */
   }
 }
-#star-rating{
+
+/* Star rating  */
+.star-rating {
+  display: inline-block;
+  position: relative;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.star-rating::before {
+  content: "★★★★★"; /* 5 empty stars */
+  color: lightgray;
+}
+
+.star-rating::after {
+  content: "★★★★★"; /* 5 filled stars */
   color: gold;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(var(--rating) * 20%); /* Adjust width dynamically */
+  overflow: hidden;
+  white-space: nowrap;
 }

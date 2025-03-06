@@ -19,7 +19,7 @@ section: post
         <div class="book-meta">
             <p><strong>Author:</strong> {{ bauthor }}</p>
             <p><strong>Genre:</strong> {{ genre }}</p>
-            <p><strong>My Rating:</strong> <span id="star-rating" data-rating="{{ rating }}"></span> {{rating}}/5</p>
+            <div class="star-rating" data-rating="{{ rating }}"></div> {{rating}}/5
         </div>
     </div>
 
@@ -41,41 +41,16 @@ section: post
 
 {% include "components/related.njk" %}
 <br>
-<nav>
-  <a href="{{ '/' | url }}" class="back_link">← back</a>
-</nav>
+{% include "components/back.njk" %}
 
 {% include "components/modalSub.njk" %}
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    function generateStars(rating) {
-        let fullStar = "★";
-        let halfStar = "⯪";
-        let emptyStar = "☆";
-        let stars = "";
-
-        let fullCount = Math.floor(rating);  // Get full stars count
-        let hasHalf = rating % 1 !== 0; // Check if there's a half star
-        let emptyCount = hasHalf ? 4 - fullCount : 5 - fullCount; // Remaining empty stars
-
-        // Add full stars
-        stars += fullStar.repeat(fullCount);
-
-        // Add half star if needed
-        if (hasHalf) {
-            stars += halfStar;
-        }
-
-        // Add empty stars
-        stars += emptyStar.repeat(emptyCount);
-
-        return stars;
-    }
-
-    let ratingElement = document.getElementById("star-rating");
-    if (ratingElement) {
-        let ratingValue = parseFloat(ratingElement.getAttribute("data-rating")); // Get rating from the element
-        ratingElement.innerHTML = generateStars(ratingValue);
-    }
+  document.querySelectorAll(".star-rating").forEach((ratingEl) => {
+    let rating = parseFloat(ratingEl.dataset.rating) || 0; // Ensure a valid number
+    ratingEl.style.setProperty("--rating", rating); // Apply dynamic width
+  });
 });
+
+
 </script>

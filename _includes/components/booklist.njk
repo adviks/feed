@@ -4,11 +4,15 @@
     <div class="book_grid" id="bookContainer">
         {% for book in booklist | reverse %}
         <div class="book_item">
-            <a href="{{ book.url | url }}" class="book_link">
-                <img src="{{ book.data.thumbnail }}" alt="{{ book.data.title }}" class="book_thumbnail">
-                <p class="book_title">{{ book.data.title }}</p>
-            </a>
+    <a href="{{ book.url | url }}" class="book_link">
+        <div class="book_thumbnail_wrapper">
+            <img src="{{ book.data.thumbnail }}" alt="{{ book.data.title }}" class="book_thumbnail">
+            <div class="book_rating">{{ book.data.rating }} ★</div>
         </div>
+        <p class="book_title">{{ book.data.title }}</p>
+    </a>
+</div>
+
         {% endfor %}
     </div>
 
@@ -118,6 +122,25 @@
     .book_title {
         font-size: 0.8rem;
     }
+}
+.book_thumbnail_wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.book_rating {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.50);
+    color: gold;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 4px;
+    border-radius: 5px;
+    text-align: center;
+    white-space: nowrap;
 }
 
 </style>

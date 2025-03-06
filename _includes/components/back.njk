@@ -1,0 +1,13 @@
+<nav>
+  <a href="#" class="back_link" onclick="goBack(); return false;">← back</a>
+</nav>
+
+<script>
+function goBack() {
+  if (document.referrer && document.referrer.includes(window.location.origin)) {
+    window.history.back();
+  } else {
+    window.location.href = "{{ '/' | url }}";
+  }
+}
+</script>

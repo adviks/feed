@@ -1,0 +1,108 @@
+<section class="books_page">
+    
+    <div class="books_grid">
+        {% for book in booklist | reverse %}
+        <div class="book_item">
+            <a href="{{ book.url | url }}" class="book_link">
+                <div class="book_thumbnail_wrapper">
+                    <img src="{{ book.data.thumbnail }}" alt="{{ book.data.title }}" class="book_thumbnail">
+                    <div class="book_rating">{{ book.data.rating }} ★</div>
+                </div>
+                <p class="book_title">{{ book.data.title }}</p>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<style>
+/* Books Page Container */
+
+/* Section Title */
+.section_title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Books Grid */
+.books_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px; 
+    justify-content: center;
+    padding: 10px;
+}
+
+/* Book Item */
+.book_item {
+    text-align: center;
+}
+
+/* Thumbnail Wrapper */
+.book_thumbnail_wrapper {
+    position: relative;
+    display: inline-block;
+    width: 150px; /* Fixed width */
+    height: 225px; /* Fixed height (3:2 aspect ratio) */
+    overflow: hidden; /* Ensures uniform size */
+    border-radius: 8px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Uniform Book Thumbnail */
+.book_thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: transform 0.2s ease-in-out;
+}
+
+.book_thumbnail:hover {
+    transform: scale(1.05);
+}
+
+/* Book Rating */
+.book_rating {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.75);
+    color: gold;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 4px 6px;
+    border-radius: 5px;
+}
+
+/* Book Title */
+.book_title {
+    margin-top: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    max-width: 150px;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .books_grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+    
+    .book_thumbnail_wrapper {
+        width: 120px;
+        height: 180px; /* Maintain 3:2 aspect ratio */
+    }
+
+    .book_title {
+        font-size: 0.9rem;
+        max-width: 120px;
+    }
+}
+</style>
