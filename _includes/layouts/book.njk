@@ -3,26 +3,36 @@ layout: layouts/base.njk
 section: post
 ---
 <article>
-<br>
+    <br>
     <p class="book-title">{{ title }}</p>
-   <small>   <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time> ✸ {{ content | readingTime }} read</small>
+    <small>
+        <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time> ✸ {{ content | readingTime }} read
+    </small>
     <br>
     <br>
-    <img src="{{ thumbnail }}" alt="{{ title }}" class="book_cover">
-    <p class="book_meta">
-        <strong>Author:</strong> {{ bauthor }} <br>
-        <strong>Genre:</strong> {{ genre }} <br>
-        <strong>Rating:</strong> ⭐ {{ rating }}/5
-    </p>
+    
+    <!-- Container for Book Thumbnail & Meta -->
+    <div class="book-container">
+        <img src="{{ thumbnail }}" alt="{{ title }}" class="book-cover">
+        
+        <div class="book-meta">
+            <p><strong>Author:</strong> {{ bauthor }}</p>
+            <p><strong>Genre:</strong> {{ genre }}</p>
+            <p><strong>My Rating:</strong> <span id="star-rating" data-rating="{{ rating }}"></span></p>
+        </div>
+    </div>
+
     <div class="content">
         {{ content | safe }}
     </div>
+    
     {% include "components/like.njk" %}
 </article>
+
 <br>
 <hr>
 <br>
- <p>Subscribe to my newsletter for a monthly round-up of new blog posts and projects I’m working on! </p>
+<p>Subscribe to my newsletter for a monthly round-up of new blog posts and projects I’m working on!</p>
 {% include "components/sub.njk" %}
 <br>
 <br>
@@ -35,3 +45,36 @@ section: post
 </nav>
 
 {% include "components/modalSub.njk" %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    function generateStars(rating) {
+        let fullStar = "★";
+        let halfStar = "⯪";
+        let emptyStar = "☆";
+        let stars = "";
+
+        let fullCount = Math.floor(rating);  // Get full stars count
+        let hasHalf = rating % 1 !== 0; // Check if there's a half star
+        let emptyCount = hasHalf ? 4 - fullCount : 5 - fullCount; // Remaining empty stars
+
+        // Add full stars
+        stars += fullStar.repeat(fullCount);
+
+        // Add half star if needed
+        if (hasHalf) {
+            stars += halfStar;
+        }
+
+        // Add empty stars
+        stars += emptyStar.repeat(emptyCount);
+
+        return stars;
+    }
+
+    let ratingElement = document.getElementById("star-rating");
+    if (ratingElement) {
+        let ratingValue = parseFloat(ratingElement.getAttribute("data-rating")); // Get rating from the element
+        ratingElement.innerHTML = generateStars(ratingValue);
+    }
+});
+</script>
