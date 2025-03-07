@@ -12,9 +12,9 @@ section: home
 <hr>
 <p class="serif" style="margin-bottom:0;">✸ Writing ✸</p>
 <small>Personal essays+ opinions</small>
-{% set postslist = collections.post | slice(0,3)%}
+{% set postslist = collections.post | slice(-3)%}
 {% include "components/postslist.njk" %}
-<a href="/blog" class="back_link">See all →</a>
+<a href="/blog" class="back_link">see all →</a>
 <hr>
 <p class="serif" style="margin-bottom:0;">✸ Books ✸</p>
 <small>Book reviews + notes.</small>
@@ -26,7 +26,7 @@ section: home
 <small>A not-so-regular newsletter.</small>
 <br>
 <br> #}
-
+{# <small>Now Playing</small> #}
 <small>{% include "components/spot.njk" %}</small>
 
 

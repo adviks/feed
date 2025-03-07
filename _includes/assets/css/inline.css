@@ -150,7 +150,7 @@ blockquote cite {
 }
 
 /* Form elements */
-input {
+input, textarea{
   border: none;
   font-size: 16px;
   background: var(--input-background);
@@ -184,7 +184,7 @@ hr {
   height: 1px;
   background: linear-gradient(to right, transparent, #e54f2d, transparent);
   position: relative;
-  margin: 1rem 0;
+  margin: 3rem 0;
 }
 
 /* Navigation */
@@ -288,6 +288,24 @@ small {
 .submitButton {
   flex-grow: 0.2;
 }
+
+/* Media query for small screens */
+@media (max-width: 600px) {
+  #signup-form {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: stretch; /* Make items take full width */
+  }
+
+  .subEmail {
+    flex-grow: 1; /* Allow email input to grow */
+    margin-bottom: 10px; /* Add some space between email and button */
+  }
+
+  .submitButton {
+    flex-grow: 0; /* Button does not need to grow */
+  }
+}
+
 
 /* Success message */
 #success-message {

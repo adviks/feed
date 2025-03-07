@@ -1,9 +1,28 @@
-<h1 class="hero_title">Join 2940+ readers for simple insightful takes on
-    <em>philosophy,</em>
-    <em>culture,
-    </em>
-    <em>technology</em>
-    and beyond.</h1>
+<h1 class="hero_title">
+  Join <span id="subscriber-count">2940</span>+ readers for simple insightful takes on
+  <em>philosophy,</em>
+  <em>culture,</em>
+  <em>technology</em>
+  and beyond.
+</h1>
 <p>Expect raw, unfiltered thoughts, deep dives, and unexpected connections—delivered straight to your inbox.</p>
+ 
+ <!--
+ // Fetch subscriber count
+ <script>
+  async function updateSubscriberCount() {
+    try {
+      const response = await fetch("/");
+      const data = await response.json();
 
-</div>
+      if (data.subscribers) {
+        document.getElementById("subscriber-count").textContent = data.subscribers;
+      }
+    } catch (error) {
+      console.error("Failed to fetch subscriber count:", error);
+    }
+  }
+
+  updateSubscriberCount();
+</script>
+-->

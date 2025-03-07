@@ -1,9 +1,57 @@
-<form name="contact" method="POST" data-netlify="true">
-  <label for="name">Name</label>
-  <input type="text" name="name" id="name" autocomplete="name" placeholder="Your name" title="Please enter your name" required>
-  <label for="email">Email</label>
-  <input type="email" name="email" id="email" autocomplete="email" placeholder="Your email address" title="The domain portion of the email address is invalid (the portion after the @)." pattern="^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*(\.\w{2,})+$" required>
-  <label for="message">Message</label>
-  <textarea name="message" id="message" placeholder="Write your message here" rows="7" required></textarea>
-  <button type="submit">Send Message</button>
-</form>
+<div class="contact-form">
+  <form name="contact" method="POST" data-netlify="true" netlify>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" autocomplete="name" placeholder="Your name" title="Please enter your name" required>
+    
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" autocomplete="email" placeholder="Your email address" title="The domain portion of the email address is invalid (the portion after the @)." pattern="^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*(\.\w{2,})+$" required>
+    
+    <label for="message">Message</label>
+    <textarea name="message" id="message" placeholder="Write your message here" rows="7" required></textarea>
+    
+    <button type="submit">Send Message</button>
+  </form>
+</div>
+<style>
+
+  .contact-form {
+  max-width: 100%; /* Set a max width for the form */
+  margin: 0; /* Center the form */
+  padding: 20px;  /* Optional: Add a border */
+  border-radius: 4px; /* Optional: Add rounded corners */
+  background-color: var(--modal-bg); /* Optional: Background color */
+}
+
+.contact-form label {
+  display: block; /* Make labels block elements */
+  margin-bottom: 5px; /* Space between label and input */
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%; /* Make inputs and textarea full width */
+  padding: 10px; /* Add padding inside inputs */
+  margin-bottom: 15px;  /* Border for inputs */
+  border-radius: 4px; /* Rounded corners for inputs */
+  box-sizing: border-box;
+  
+}
+
+.contact-form button {
+  background-color: var(--button-background); /* Button background color */
+  color: white; /* Button text color */
+  border: none; /* Remove border */
+  padding: 10px 15px; /* Padding for button */
+  border-radius: 4px; /* Rounded corners for button */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .contact-form {
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+}
+
+</style>

@@ -23,3 +23,4 @@ if(localStorage.getItem("darkMode") === "enabled"){
 //     document.body.classList.add("dark-mode");
 //     btn.classList.add("ph-toggle-right");
 // }
+
